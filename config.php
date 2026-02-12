@@ -27,10 +27,10 @@ return [
         ],
         'musician' => [
             'label' => 'Musician',
-            'categories' => ['music'], // Only shows music posts
+            'categories' => ['music'], // ✅ PHP 8.1+ SAFE - quoted strings
             'hero' => [
                 'image' => '/assets/img/musician-hero.jpg',
-                'heading' => 'Sound & Fury',
+                'heading' => "Hi. Im Jordan. A Musician.",
                 'subheading' => 'Exploring musical expression'
             ],
             'about_content' => '/about/musician.md',
@@ -38,7 +38,7 @@ return [
         ],
         'a pharmeteucial jingle writer' => [
             'label' => 'A Pharmaceutical Jingle Writer',
-            'categories' => ['advertising', 'health'],
+            'categories' => ['advertising', 'health'], // ✅ All quoted
             'hero' => [
                 'image' => '/assets/img/pharma-hero.jpg',
                 'heading' => 'Jingles That Heal',
@@ -49,7 +49,7 @@ return [
         ],
         'a true professional' => [
             'label' => 'A True Professional',
-            'categories' => ['business', 'professional'],
+            'categories' => ['business', 'professional'], // ✅ All quoted
             'hero' => [
                 'image' => '/assets/img/professional-hero.jpg',
                 'heading' => 'Business Excellence',
@@ -60,7 +60,7 @@ return [
         ],
         'a huge dweeb' => [
             'label' => 'A Huge Dweeb',
-            'categories' => ['tech', 'gaming', 'nerd'],
+            'categories' => ['tech', 'gaming', 'nerd'], // ✅ All quoted
             'hero' => [
                 'image' => '/assets/img/dweeb-hero.jpg',
                 'heading' => 'Embrace the Dweeb',
@@ -90,7 +90,7 @@ return [
 
     // Helper Functions
     'getDate' => function ($page) {
-        return Datetime::createFromFormat('U', $page->date);
+        return \DateTime::createFromFormat('U', $page->date);
     },
     
     'getExcerpt' => function ($page, $length = 255) {
@@ -134,12 +134,14 @@ return [
         $categories = $allThemes[$theme]['categories'] ?? [];
         
         return $posts->filter(function ($post) use ($categories) {
-            if (!$post->categories) {
-                return false;
+            if (!$post->categories || !is_array($post->categories)) {
+                return empty($categories); // Show uncategorized posts on "human" theme
             }
             
-            // Check if post has any category that matches theme categories
-            return !empty(array_intersect($post->categories, $categories));
+            $postCats = array_map('trim', $post->categories);
+            $themeCats = array_map('trim', $categories);
+            
+            return empty($categories) || !empty(array_intersect($postCats, $themeCats));
         });
     },
 ];

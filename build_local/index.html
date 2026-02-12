@@ -23,7 +23,7 @@
 
     
 <script>
-    window.themeConfig = {"human":{"label":"Human","categories":[],"hero":{"image":"\/assets\/img\/human-hero.jpg","heading":"Living Life Authentically","subheading":"Thoughts on being human in a digital world"},"about_content":"about-default.md","about_image":"\/assets\/img\/about-default.png"},"musician":{"label":"Musician","categories":["music"],"hero":{"image":"\/assets\/img\/musician-hero.jpg","heading":"Sound & Fury","subheading":"Exploring musical expression"},"about_content":"\/about\/musician.md","about_image":"\/assets\/img\/musician.png"},"a pharmeteucial jingle writer":{"label":"A Pharmaceutical Jingle Writer","categories":["advertising","health"],"hero":{"image":"\/assets\/img\/pharma-hero.jpg","heading":"Jingles That Heal","subheading":"Side effects may include catchy tunes"},"about_content":"\/about\/a-pharmaceutical-jingle-writer.md","about_image":"\/assets\/img\/a-pharmaceutical-jingle-writer.png"},"a true professional":{"label":"A True Professional","categories":["business","professional"],"hero":{"image":"\/assets\/img\/professional-hero.jpg","heading":"Business Excellence","subheading":"Professional insights and expertise"},"about_content":"\/about\/a-true-professional.md","about_image":"\/assets\/img\/a-true-professional.png"},"a huge dweeb":{"label":"A Huge Dweeb","categories":["tech","gaming","nerd"],"hero":{"image":"\/assets\/img\/dweeb-hero.jpg","heading":"Embrace the Dweeb","subheading":"Deep dives into tech, gaming, and geek culture"},"about_content":"\/about\/a-huge-dweeb.md","about_image":"\/assets\/img\/a-huge-dweeb.png"}};
+    window.themeConfig = {"human":{"label":"Human","categories":[],"hero":{"image":"\/assets\/img\/human-hero.jpg","heading":"Living Life Authentically","subheading":"Thoughts on being human in a digital world"},"about_content":"about-default.md","about_image":"\/assets\/img\/about-default.png"},"musician":{"label":"Musician","categories":["music"],"hero":{"image":"\/assets\/img\/musician-hero.jpg","heading":"Hi. Im Jordan. A Musician.","subheading":"Exploring musical expression"},"about_content":"\/about\/musician.md","about_image":"\/assets\/img\/musician.png"},"a pharmeteucial jingle writer":{"label":"A Pharmaceutical Jingle Writer","categories":["advertising","health"],"hero":{"image":"\/assets\/img\/pharma-hero.jpg","heading":"Jingles That Heal","subheading":"Side effects may include catchy tunes"},"about_content":"\/about\/a-pharmaceutical-jingle-writer.md","about_image":"\/assets\/img\/a-pharmaceutical-jingle-writer.png"},"a true professional":{"label":"A True Professional","categories":["business","professional"],"hero":{"image":"\/assets\/img\/professional-hero.jpg","heading":"Business Excellence","subheading":"Professional insights and expertise"},"about_content":"\/about\/a-true-professional.md","about_image":"\/assets\/img\/a-true-professional.png"},"a huge dweeb":{"label":"A Huge Dweeb","categories":["tech","gaming","nerd"],"hero":{"image":"\/assets\/img\/dweeb-hero.jpg","heading":"Embrace the Dweeb","subheading":"Deep dives into tech, gaming, and geek culture"},"about_content":"\/about\/a-huge-dweeb.md","about_image":"\/assets\/img\/a-huge-dweeb.png"}};
 </script>
 
 <script type="module" src="http://[::1]:5173/@vite/client"></script>    <link rel="stylesheet" href="http://[::1]:5173/source/_assets/css/main.css">
@@ -33,7 +33,7 @@
     <body 
 x-data="{
     theme: localStorage.getItem('theme') || 'human',
-    themeDropdownOpen: false,  <!-- ADD THIS LINE -->
+    themeDropdownOpen: false,
     themeDropdown: {
         open: false,
         theme: localStorage.getItem('theme') || 'human'
@@ -50,67 +50,74 @@ x-data="{
         this.filterPosts(value);
         this.showHero(value);
     },
-        filterPosts(theme) {
-            const themeCategories = window.themeConfig?.[theme]?.categories || [];
-            const posts = document.querySelectorAll('.post-item');
-            const separators = document.querySelectorAll('.post-separator');
-            
-            posts.forEach(post => {
-                const postCategories = post.dataset.categories?.split(',').filter(c => c) || [];
-                const hasMatch = postCategories.some(cat => themeCategories.includes(cat));
+    filterPosts(theme) {
+        const themeCategories = window.themeConfig?.[theme]?.categories || [];
+        const posts = document.querySelectorAll('.post-item');
+        const separators = document.querySelectorAll('.post-separator');
+        
+        posts.forEach(post => {
+            const rawCategories = post.dataset.categories || '';
+            // Trim whitespace + normalize case + split
+            const postCategories = rawCategories
+                .split(',')
+                .map(cat => cat.trim().toLowerCase())
+                .filter(c => c);
                 
-                if (hasMatch || themeCategories.length === 0) {
-                    post.style.display = '';
-                } else {
-                    post.style.display = 'none';
-                }
-            });
+            const normalizedThemeCats = themeCategories.map(cat => cat.toLowerCase());
+            const hasMatch = postCategories.some(cat => 
+                normalizedThemeCats.includes(cat)
+            );
             
-            separators.forEach(sep => sep.style.display = '');
-        },
-        showHero(theme) {
-            document.querySelectorAll('[data-theme-hero]').forEach(hero => {
-                hero.classList.add('hidden');
-            });
-            
-            const currentHero = document.querySelector(`[data-theme-hero='${theme}']`);
-            if (currentHero) {
-                currentHero.classList.remove('hidden');
+            if (hasMatch || themeCategories.length === 0) {
+                post.style.display = '';
+            } else {
+                post.style.display = 'none';
             }
+        });
+        
+        // Hide separators when few/no posts visible
+        const visiblePosts = Array.from(posts).filter(p => p.style.display !== 'none');
+        separators.forEach(sep => {
+            sep.style.display = visiblePosts.length > 1 ? '' : 'none';
+        });
+    },
+    showHero(theme) {
+        document.querySelectorAll('[data-theme-hero]').forEach(hero => {
+            hero.classList.add('hidden');
+        });
+        
+        const currentHero = document.querySelector(`[data-theme-hero='${theme}']`);
+        if (currentHero) {
+            currentHero.classList.remove('hidden');
         }
-    }"
-    x-init="
-        setTimeout(() => {
-            setTheme(theme);
-            filterPosts(theme);
-            showHero(theme);
-        }, 100);
-    "
-    :data-theme="theme"
-    class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal font-body"
+    }
+}"
+x-init="
+    setTimeout(() => {
+        setTheme(theme);
+        filterPosts(theme);
+        showHero(theme);
+    }, 100);
+"
+:data-theme="theme"
+class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal font-body"
 >
 
         <header class="flex items-center h-24 py-4" role="banner">
     <div class="container flex items-center max-w-8xl sm:max-w-full mx-auto px-4 lg:px-8 border-b-1 border-[var(--text)]/30">
           
-
-        <span class="flex items-center">  <!-- ← THIS KEEPS "Jordan Keller" VISIBLE -->
+        <span class="flex items-center">
     <a href="/" title="Jordan Keller home" class="inline-flex items-center decoration-transparent">
         <h1 class="text-lg md:text-xl my-0 antialiased tracking-wide">Jordan Keller //</h1>
     </a>
     
-    <!-- WORKING DROPDOWN -->
-    <span class="relative antialiased pl-1 italic font-thin tracking-wide" style="position: relative;">
+    <span class="relative antialiased pl-1 italic font-thin tracking-wide">
         <button 
             @click="themeDropdownOpen = !themeDropdownOpen"
-            class="px-2 py-1 rounded text-lg font-light hover:underline ml-2"
+            class="px-2 py-1 rounded text-lg font-light hover:underline ml-0 font-[var(--heading-font)] text-[var(--text)]"
             style="
-                font-family: 'Instrument Serif', serif; 
-                color: white !important; 
                 font-size: 20px; 
                 font-weight: 200;
-                background: rgba(0,0,0,0.3);
-                border: 1px solid rgba(255,255,255,0.3);
                 min-height: 32px;
                 min-width: 80px;
             "
@@ -122,8 +129,7 @@ x-data="{
             x-show="themeDropdownOpen"
             @click.away="themeDropdownOpen = false"
             x-transition
-            class="absolute right-0 mt-2 w-64 bg-black border border-white/30 shadow-2xl z-[9999] rounded-lg py-2"
-            style="color: white !important;"
+            class="absolute right-0 mt-2 w-64 bg-[var(--bg)] shadow-2xl z-[9999] py-1"
         >
             <button @click="setTheme('human'); themeDropdownOpen = false" 
                     class="block w-full text-left px-4 py-3 hover:bg-gray-800 rounded transition-all font-medium w-full text-left"
@@ -135,27 +141,9 @@ x-data="{
                     :class="{ 'bg-green-500 text-black': theme === 'musician' }">
                 Musician
             </button>
-            <button @click="setTheme('a pharmeteucial jingle writer'); themeDropdownOpen = false" 
-                    class="block w-full text-left px-4 py-3 hover:bg-gray-800 rounded transition-all font-medium truncate w-full text-left"
-                    :class="{ 'bg-green-500 text-black': theme === 'a pharmeteucial jingle writer' }">
-                Pharmaceutical Jingle
-            </button>
-            <button @click="setTheme('a true professional'); themeDropdownOpen = false" 
-                    class="block w-full text-left px-4 py-3 hover:bg-gray-800 rounded transition-all font-medium truncate w-full text-left"
-                    :class="{ 'bg-green-500 text-black': theme === 'a true professional' }">
-                True Professional
-            </button>
-            <button @click="setTheme('a huge dweeb'); themeDropdownOpen = false" 
-                    class="block w-full text-left px-4 py-3 hover:bg-gray-800 rounded transition-all font-medium truncate w-full text-left"
-                    :class="{ 'bg-green-500 text-black': theme === 'a huge dweeb' }">
-                Huge Dweeb
-            </button>
         </div>
     </span>
 </span>
-
-
-
 
             <span class="flex flex-1 justify-end items-end gap-4 font-sans text-sm">
             <nav class="hidden lg:flex items-end justify-end text-md uppercase tracking-widest text-xs">
@@ -225,60 +213,41 @@ x-data="{
                             <img src="/assets/img/human-hero.jpg" 
                      alt="Hero image" 
                      class="w-full h-64 object-cover rounded mb-4">
-                <h1 class="text-4xl font-bold mb-2">
-                    Living Life Authentically
-                </h1>
-                <h2 class="text-2xl opacity-80">
-                    Thoughts on being human in a digital world
-                </h2>
+                <h1 class="text-4xl font-bold mb-2">Living Life Authentically</h1>
+                <h2 class="text-2xl opacity-80">Thoughts on being human in a digital world</h2>
                     </div>
             <div class="hero-section mb-12 hidden" data-theme-hero="musician">
                             <img src="/assets/img/musician-hero.jpg" 
                      alt="Hero image" 
                      class="w-full h-64 object-cover rounded mb-4">
-                <h1 class="text-4xl font-bold mb-2">
-                    Sound &amp; Fury
-                </h1>
-                <h2 class="text-2xl opacity-80">
-                    Exploring musical expression
-                </h2>
+                <h1 class="text-4xl font-bold mb-2">Hi. Im Jordan. A Musician.</h1>
+                <h2 class="text-2xl opacity-80">Exploring musical expression</h2>
                     </div>
             <div class="hero-section mb-12 hidden" data-theme-hero="a pharmeteucial jingle writer">
                             <img src="/assets/img/pharma-hero.jpg" 
                      alt="Hero image" 
                      class="w-full h-64 object-cover rounded mb-4">
-                <h1 class="text-4xl font-bold mb-2">
-                    Jingles That Heal
-                </h1>
-                <h2 class="text-2xl opacity-80">
-                    Side effects may include catchy tunes
-                </h2>
+                <h1 class="text-4xl font-bold mb-2">Jingles That Heal</h1>
+                <h2 class="text-2xl opacity-80">Side effects may include catchy tunes</h2>
                     </div>
             <div class="hero-section mb-12 hidden" data-theme-hero="a true professional">
                             <img src="/assets/img/professional-hero.jpg" 
                      alt="Hero image" 
                      class="w-full h-64 object-cover rounded mb-4">
-                <h1 class="text-4xl font-bold mb-2">
-                    Business Excellence
-                </h1>
-                <h2 class="text-2xl opacity-80">
-                    Professional insights and expertise
-                </h2>
+                <h1 class="text-4xl font-bold mb-2">Business Excellence</h1>
+                <h2 class="text-2xl opacity-80">Professional insights and expertise</h2>
                     </div>
             <div class="hero-section mb-12 hidden" data-theme-hero="a huge dweeb">
                             <img src="/assets/img/dweeb-hero.jpg" 
                      alt="Hero image" 
                      class="w-full h-64 object-cover rounded mb-4">
-                <h1 class="text-4xl font-bold mb-2">
-                    Embrace the Dweeb
-                </h1>
-                <h2 class="text-2xl opacity-80">
-                    Deep dives into tech, gaming, and geek culture
-                </h2>
+                <h1 class="text-4xl font-bold mb-2">Embrace the Dweeb</h1>
+                <h2 class="text-2xl opacity-80">Deep dives into tech, gaming, and geek culture</h2>
                     </div>
     
     
-            <div class="post-item w-full mb-6" data-categories="">
+            <div class="post-item w-full mb-6" 
+             data-categories="personal">
             
             <p class="text-text opacity-60 font-medium my-2">
                 February 7, 2026
@@ -294,13 +263,14 @@ x-data="{
 
             <div class="grid grid-cols-2 gap-4 w-full">
                 <span class="w-1/2">
-                    <a href="http://jordankeller.test/blog/test" title="Read - hi" class="uppercase tracking-widest font-sans text-xs opacity-50 mb-4">
+                    <a href="http://jordankeller.test/blog/test" title="Read - hi" 
+                       class="uppercase tracking-widest font-sans text-xs opacity-50 mb-4">
                         1 min read
                     </a>
                 </span>
-
                 <span class="text-right">
-                    <a href="http://jordankeller.test/blog/test" title="Read - hi" class="uppercase tracking-wide mb-4 font-sans text-xs font-light tracking-widest">
+                    <a href="http://jordankeller.test/blog/test" title="Read - hi" 
+                       class="uppercase tracking-wide mb-4 font-sans text-xs font-light tracking-widest">
                         Read <span class="tracking-tighter">>></span>
                     </a>
                 </span>
@@ -308,7 +278,8 @@ x-data="{
         </div>
 
                     <hr class="border-b my-6 post-separator">
-                    <div class="post-item w-full mb-6" data-categories="">
+                    <div class="post-item w-full mb-6" 
+             data-categories="music">
             
             <p class="text-text opacity-60 font-medium my-2">
                 February 6, 2026
@@ -326,13 +297,14 @@ here's a link</p>
 
             <div class="grid grid-cols-2 gap-4 w-full">
                 <span class="w-1/2">
-                    <a href="http://jordankeller.test/blog/four-live-music-videos" title="Read - The sound of four musicians in a room" class="uppercase tracking-widest font-sans text-xs opacity-50 mb-4">
+                    <a href="http://jordankeller.test/blog/four-live-music-videos" title="Read - The sound of four musicians in a room" 
+                       class="uppercase tracking-widest font-sans text-xs opacity-50 mb-4">
                         1 min read
                     </a>
                 </span>
-
                 <span class="text-right">
-                    <a href="http://jordankeller.test/blog/four-live-music-videos" title="Read - The sound of four musicians in a room" class="uppercase tracking-wide mb-4 font-sans text-xs font-light tracking-widest">
+                    <a href="http://jordankeller.test/blog/four-live-music-videos" title="Read - The sound of four musicians in a room" 
+                       class="uppercase tracking-wide mb-4 font-sans text-xs font-light tracking-widest">
                         Read <span class="tracking-tighter">>></span>
                     </a>
                 </span>
@@ -340,8 +312,10 @@ here's a link</p>
         </div>
 
                     <hr class="border-b my-6 post-separator">
-                    <div class="post-item w-full mb-6" data-categories="">
-                            <img src="../assets/img/operation-route-66.webp" alt="Operation Route 66 cover image" class="mb-6 max-h-96 w-full object-cover mix-blend-screen transition hover:mix-blend-normal rounded">
+                    <div class="post-item w-full mb-6" 
+             data-categories="music">
+                            <img src="../assets/img/operation-route-66.webp" alt="Operation Route 66 cover image" 
+                     class="mb-6 max-h-96 w-full object-cover mix-blend-screen transition hover:mix-blend-normal rounded">
             
             <p class="text-text opacity-60 font-medium my-2">
                 March 8, 2015
@@ -359,13 +333,14 @@ A 12-track album featuring the original score for the documentary film.</p>
 
             <div class="grid grid-cols-2 gap-4 w-full">
                 <span class="w-1/2">
-                    <a href="http://jordankeller.test/blog/operation-route-66" title="Read - Operation Route 66" class="uppercase tracking-widest font-sans text-xs opacity-50 mb-4">
+                    <a href="http://jordankeller.test/blog/operation-route-66" title="Read - Operation Route 66" 
+                       class="uppercase tracking-widest font-sans text-xs opacity-50 mb-4">
                         1 min read
                     </a>
                 </span>
-
                 <span class="text-right">
-                    <a href="http://jordankeller.test/blog/operation-route-66" title="Read - Operation Route 66" class="uppercase tracking-wide mb-4 font-sans text-xs font-light tracking-widest">
+                    <a href="http://jordankeller.test/blog/operation-route-66" title="Read - Operation Route 66" 
+                       class="uppercase tracking-wide mb-4 font-sans text-xs font-light tracking-widest">
                         Read <span class="tracking-tighter">>></span>
                     </a>
                 </span>
@@ -376,22 +351,26 @@ A 12-track album featuring the original score for the documentary film.</p>
     
     
     
+    
     <script>
-        console.log('=== DEBUG INFO ===');
-        console.log('window.themeConfig exists:', !!window.themeConfig);
-        console.log('window.themeConfig:', window.themeConfig);
-        console.log('Posts on page:', document.querySelectorAll('.post-item').length);
-        document.querySelectorAll('.post-item').forEach((post, i) => {
-            console.log(`Post ${i} categories:`, post.dataset.categories);
+    console.log('=== SUPER DEBUG ===');
+    console.log('Musician categories:', window.themeConfig?.musician?.categories);
+    console.log('Posts found:', document.querySelectorAll('.post-item').length);
+
+    document.querySelectorAll('.post-item').forEach((post, i) => {
+        console.log(`Post ${i}:`, {
+            title: post.querySelector('h2')?.textContent?.substring(0, 30),
+            rawDataAttr: post.dataset.categories,
+            processedCats: (post.dataset.categories || '').split(',').map(c => c.trim().toLowerCase()).filter(c => c)
         });
-        console.log('Heroes on page:', document.querySelectorAll('[data-theme-hero]').length);
-        console.log('=== END DEBUG ===');
+    });
+    console.log('=== END DEBUG ===');
     </script>
+
         </main>
 
         <footer class="bg-bg text-center text-sm mt-12 py-4" role="contentinfo">
          <div class="w-80 mx-auto">     
-
             <div x-data="{
         init(){
             fetch('/index.json')
@@ -503,13 +482,11 @@ A 12-track album featuring the original score for the documentary film.</p>
                 <li class="md:mr-2">
                     &copy; <a href="https://tighten.co" title="Tighten website">Tighten</a> 2026.
                 </li>
-
                 <li>
                     Built with <a href="http://jigsaw.tighten.co" title="Jigsaw by Tighten">Jigsaw</a>
                     and <a href="https://tailwindcss.com" title="Tailwind CSS, a utility-first CSS framework">Tailwind CSS</a>.
                 </li>
             </ul>
-           
         </footer>
 
         <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
