@@ -19,7 +19,7 @@ return [
             'categories' => [], // Shows ALL posts (empty = no filtering)
             'hero' => [
                 'image' => '/assets/img/human-hero.jpg',
-                'heading' => 'Living Life Authentically',
+                'heading' => 'Messy human',
                 'subheading' => 'Thoughts on being human in a digital world'
             ],
             'about_content' => 'about-default.md',
@@ -30,7 +30,7 @@ return [
             'categories' => ['music'], // ✅ PHP 8.1+ SAFE - quoted strings
             'hero' => [
                 'image' => '/assets/img/musician-hero.jpg',
-                'heading' => "Hi. Im Jordan. A Musician.",
+                'heading' => "I write, produce, and perform music",
                 'subheading' => 'Exploring musical expression'
             ],
             'about_content' => '/about/musician.md',

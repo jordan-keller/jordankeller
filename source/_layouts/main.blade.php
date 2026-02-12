@@ -133,7 +133,7 @@ class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal
             x-show="themeDropdownOpen"
             @click.away="themeDropdownOpen = false"
             x-transition
-            class="absolute right-0 mt-2 w-64 bg-[var(--bg)] shadow-2xl z-[9999] py-1"
+            class="absolute left-0 mt-2 w-64 bg-[var(--bg)]/50 shadow-2xl z-[9999] py-1"
         >
             <button @click="setTheme('human'); themeDropdownOpen = false" 
                     class="block w-full text-left px-4 py-3 hover:bg-gray-800 rounded transition-all font-medium w-full text-left"
