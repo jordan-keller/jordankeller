@@ -1,11 +1,29 @@
 body {
   font-size: 17px;
-  transition: background-color 0.8s ease, color 0.8s ease, box-shadow 0.8s ease;
+  transition:
+    background-color 0.8s ease,
+    color 0.8s ease,
+    box-shadow 0.8s ease;
 }
 
 a {
-  @apply font-semibold;
-  @apply no-underline;
+  @apply text-[var(--text)] underline underline-offset-4 decoration-[var(--link)] decoration-1 transition-colors duration-200;
+}
+
+a:hover,
+a:focus {
+  color: var(--link);
+  text-decoration-color: var(--link);
+}
+
+/* Active/focus states for better accessibility */
+a:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+a:active {
+  color: var(--link-hover);
 }
 
 blockquote {
@@ -44,9 +62,8 @@ h3,
 h4,
 h5,
 h6 {
-  @apply mt-8;
-  @apply mb-4;
-  @apply leading-tight;
+  @apply mt-1;
+  @apply mb-1;
 
   &:first-child {
     @apply mt-0;
@@ -141,4 +158,22 @@ pre {
 
 [x-cloak] {
   display: none !important;
+}
+
+.youtube-embed {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.youtube-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }

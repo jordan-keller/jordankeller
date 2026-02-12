@@ -5,26 +5,28 @@
 @endphp
 
 @section('body')
-    @if ($page->cover_image)
-        <img src="{{ $page->cover_image }}" alt="{{ $page->title }} cover image" class="mb-2">
-    @endif
-
-    <h1 class="leading-none mb-2">{{ $page->title }}</h1>
-
-    <p class="text-text text-md md:mt-0">{{ $page->author }}  /  {{ date('F j, Y', $page->date) }}</p>
 
     @if ($page->categories)
         @foreach ($page->categories as $i => $category)
             <a
                 href="{{ '/blog/categories/' . $category }}"
                 title="View posts in {{ $category }}"
-                class="inline-block hover:bg-hover leading-loose tracking-wide uppercase text-xs font-semibold mr-4 px-3 pt-px"
-                style="background-color: var(--link); color: var(--bg);"
+                class="inline-block tracking-wider uppercase text-xs font-sans font-light opacity-70"
             >{{ $category }}</a>
         @endforeach
     @endif
 
-    <div class="border-b border-link mb-10 pb-4" v-pre>
+    <h1 class="leading-none mb-2">{{ $page->title }}</h1>
+    <div class="leading-none mb-2 text-2xl font-normal font-[heading]">{{ $page->description }}</div>
+
+        @if ($page->cover_image)
+            <img src="../{{ $page->cover_image }}" alt="{{ $page->title }} cover image" class="mb-2">
+        @endif
+
+    <p class="text-text font-sans text-xs md:mt-0 opacity-70">{{ $page->author }}  /  {{ date('F j, Y', $page->date) }}</p>
+
+
+    <div class="border-b border-link mb-10 pb-4">
         @yield('content')
     </div>
 

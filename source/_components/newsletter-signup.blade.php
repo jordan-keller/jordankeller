@@ -1,4 +1,4 @@
-<div class="flex justify-center items-center bg-gray-200 border border-gray-400 rounded-lg p-4 md:p-8 md:px-12 my-12 shadow-sm lg:-mx-12">
+{{-- <div class="flex justify-center items-center bg-gray-200 border border-gray-400 rounded-lg p-4 md:p-8 md:px-12 my-12 shadow-sm lg:-mx-12">
     <form action="" method="post" class="w-full max-w-3xl">
         <div class="flex flex-col items-center w-full gap-3 md:gap-4">
             <div class="text-xl md:text-2xl font-bold text-gray-900 text-center">Sign up for our newsletter</div>
@@ -9,4 +9,4 @@
             <div class="text-sm">Need forms? Try <a href="https://fieldgoal.io/" class="underline" target="_blank">FieldGoal</a></div>
         </div>
     </form>
-</div>
+</div> --}}
