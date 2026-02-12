@@ -88,3 +88,35 @@ npm run dev
 # build static files with Vite
 npm run build
 ```
+
+# Dynamic Theme + Filterable Blog
+
+using my Jigsaw/Blade/Tailwind static blog (jordankeller/ structure: source/index.blade.php extends main.blade.php, \_posts/ MD with category frontmatter, \_assets/main.css + themes.css). I want:
+
+Client-side theme dropdown in nav (Alpine.js + localStorage, like my prior site.js/layout.blade.php setup): switches CSS vars/classes on <html data-theme='default|terminal|etc'>, persists choice, works post-build_local. Use themes.css for variants (e.g., --bg-primary black/green terminal mode).
+
+On index.blade.php only: JS filter $posts by category frontmatter (e.g., dropdown 'all|tech|music', hide/show via Alpine x-for + :hidden). Keep full $posts in HTML for client-side filtering; no server rebuilds.
+
+Current files:
+
+main.blade.php: [paste full content]
+
+index.blade.php: [paste full content, including @foreach($posts)]
+
+main.css: [paste relevant CSS vars/Tailwind]
+
+themes.css: [paste or describe]
+
+Provide:
+
+Updated main.blade.php (nav dropdown + <html data-theme>)
+
+Updated index.blade.php (category dropdown + x-data for filter)
+
+site.js snippet (Alpine init/theme + filter logic)
+
+themes.css additions (CSS vars per theme)
+
+Build/test steps: npm run dev, check build_local/index.html has all posts hidden/shown correctly.
+
+Handle static: no PHP runtime, pure JS/CSS. Match my Mac/Netlify deploy."
