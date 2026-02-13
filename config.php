@@ -30,45 +30,13 @@ return [
             'categories' => ['music'],
             'hero' => [
                 'image' => '/assets/img/musician-hero.jpg',
-                'heading' => 'I write, produce, and perform music',
-                'subheading' => 'Exploring musical expression'
+                'heading' => 'Music',
+                'subheading' => 'Songwriting, production, and musical musings.'
             ],
             'about_content' => '/about/musician.md',
             'about_image' => '/assets/img/musician.png',
         ],
-        'a pharmeteucial jingle writer' => [
-            'label' => 'A Pharmaceutical Jingle Writer',
-            'categories' => ['advertising', 'health'],
-            'hero' => [
-                'image' => '/assets/img/pharma-hero.jpg',
-                'heading' => 'Jingles That Heal',
-                'subheading' => 'Side effects may include catchy tunes'
-            ],
-            'about_content' => '/about/a-pharmaceutical-jingle-writer.md',
-            'about_image' => '/assets/img/a-pharmaceutical-jingle-writer.png',
-        ],
-        'a true professional' => [
-            'label' => 'A True Professional',
-            'categories' => ['business', 'professional'],
-            'hero' => [
-                'image' => '/assets/img/professional-hero.jpg',
-                'heading' => 'Business Excellence',
-                'subheading' => 'Professional insights and expertise'
-            ],
-            'about_content' => '/about/a-true-professional.md',
-            'about_image' => '/assets/img/a-true-professional.png',
-        ],
-        'a huge dweeb' => [
-            'label' => 'A Huge Dweeb',
-            'categories' => ['tech', 'gaming', 'nerd'],
-            'hero' => [
-                'image' => '/assets/img/dweeb-hero.jpg',
-                'heading' => 'Embrace the Dweeb',
-                'subheading' => 'Deep dives into tech, gaming, and geek culture'
-            ],
-            'about_content' => '/about/a-huge-dweeb.md',
-            'about_image' => '/assets/img/a-huge-dweeb.png',
-        ],
+
     ],
     
     // Collections
