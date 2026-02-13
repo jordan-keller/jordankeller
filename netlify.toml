@@ -1,7 +1,9 @@
 [build]
-  command = "npm run build"
-  publish = "build_local"
+  command = "composer install && npm run build"
+  publish = "build_production"
 
-# Optional: Skip builds on develop branch
+# Skip builds on the develop branch to save build credits.
+# Pushes to develop will NOT trigger a deploy.
+# Only merges/pushes to the production branch (main) will trigger builds.
 [context.develop]
   ignore = "exit 0"

@@ -10,5 +10,10 @@
     },
     "require-dev": {
         "symfony/console": "^7.3"
+    },
+    "config": {
+        "platform": {
+            "php": "8.3.30"
+        }
     }
 }
