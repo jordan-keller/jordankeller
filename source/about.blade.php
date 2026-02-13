@@ -13,7 +13,7 @@ description: I’m Jordan Keller. I’m a writer, producer, and multimedia artis
 
 I’m Jordan Keller. I’m a writer, producer, and multimedia artist. 
 
-I explore why and how things work. I write about art, technology, culture, the human condition, and any subject that interests me. 
+I explore why and how things work. I write about cinematic storytelling, songwriting, technology, creativity,and any subject that interests me. 
 
 I publish for people (not algorithms), so that you might explore with me.
 

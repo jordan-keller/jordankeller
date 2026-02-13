@@ -8,3 +8,8 @@ source/hot
 source/assets/build/
 .DS_Store
 build_local/
+.DS_Store
+._.DS_Store
+
+# Local Netlify folder
+.netlify

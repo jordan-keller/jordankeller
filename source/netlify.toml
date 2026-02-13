@@ -1,0 +1,10 @@
+[build]
+  command = "composer install --no-dev && ./vendor/bin/jigsaw build production && vite build"
+  publish = "build_production"
+
+[context.develop]
+  ignore = "exit 0"
+
+[context.production]
+  command = "composer install --no-dev && ./vendor/bin/jigsaw build production && vite build"
+  publish = "build_production"

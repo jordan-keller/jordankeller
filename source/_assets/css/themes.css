@@ -2,17 +2,14 @@
 [data-theme="human"] {
   --bg: #00bfff;
   --text: #d3f0ff;
-  --link: #5e971d;
-  --link-hover: rgb(193, 226, 155);
+  --link: #5afff8;
+  --link-hover: #41e3db;
   --font-body: "Lato", sans;
   --font-heading: "Instrument Serif", sans-serif;
 }
 
 [data-theme="human"] body {
-  text-shadow:
-    2px 2px 2px #ffffff80,
-    3px 3px 3px #ff9c9c80;
-  background-image: url("/assets/img/human.jpg");
+  background-image: url("/assets/img/textured-bg.jpg");
   background-blend-mode: multiply;
   background-size: cover;
   background-attachment: fixed;
@@ -32,7 +29,7 @@
 [data-theme="musician"] body {
   background-image:
     linear-gradient(hsla(142, 69%, 58%, 0.418), hsla(67, 100%, 50%, 0.918)),
-    url("/assets/img/human.jpg");
+    url("/assets/img/textured-bg.jpg");
   background-blend-mode: saturation;
   background-size: cover;
   background-attachment: fixed;

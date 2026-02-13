@@ -19,18 +19,18 @@ return [
             'categories' => [], // Shows ALL posts (empty = no filtering)
             'hero' => [
                 'image' => '/assets/img/human-hero.jpg',
-                'heading' => 'Messy human',
-                'subheading' => 'Thoughts on being human in a digital world'
-            ],
+                'heading' => 'All Posts',
+                'subheading' => 'The everything feed'
+            ], // ← Added missing comma here!
             'about_content' => 'about-default.md',
             'about_image' => '/assets/img/about-default.png',
         ],
         'musician' => [
             'label' => 'Musician',
-            'categories' => ['music'], // ✅ PHP 8.1+ SAFE - quoted strings
+            'categories' => ['music'],
             'hero' => [
                 'image' => '/assets/img/musician-hero.jpg',
-                'heading' => "I write, produce, and perform music",
+                'heading' => 'I write, produce, and perform music',
                 'subheading' => 'Exploring musical expression'
             ],
             'about_content' => '/about/musician.md',
@@ -38,7 +38,7 @@ return [
         ],
         'a pharmeteucial jingle writer' => [
             'label' => 'A Pharmaceutical Jingle Writer',
-            'categories' => ['advertising', 'health'], // ✅ All quoted
+            'categories' => ['advertising', 'health'],
             'hero' => [
                 'image' => '/assets/img/pharma-hero.jpg',
                 'heading' => 'Jingles That Heal',
@@ -49,7 +49,7 @@ return [
         ],
         'a true professional' => [
             'label' => 'A True Professional',
-            'categories' => ['business', 'professional'], // ✅ All quoted
+            'categories' => ['business', 'professional'],
             'hero' => [
                 'image' => '/assets/img/professional-hero.jpg',
                 'heading' => 'Business Excellence',
@@ -60,7 +60,7 @@ return [
         ],
         'a huge dweeb' => [
             'label' => 'A Huge Dweeb',
-            'categories' => ['tech', 'gaming', 'nerd'], // ✅ All quoted
+            'categories' => ['tech', 'gaming', 'nerd'],
             'hero' => [
                 'image' => '/assets/img/dweeb-hero.jpg',
                 'heading' => 'Embrace the Dweeb',

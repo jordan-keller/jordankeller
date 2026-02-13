@@ -1,24 +1,25 @@
 {
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "prod": "vite build --mode production"
-    },
-    "devDependencies": {
-        "@tailwindcss/vite": "^4.1.18",
-        "@tighten/jigsaw-vite-plugin": "^1.0.0",
-        "alpinejs": "^3.14.1",
-        "fuse.js": "^6.4.6",
-        "tailwindcss": "^4.1.18",
-        "vite": "^6.2.1"
-    },
-    "dependencies": {
-        "@fontsource-variable/ibm-plex-sans": "^5.2.8",
-        "@fontsource-variable/pixelify-sans": "^5.2.7",
-        "@fontsource/instrument-serif": "^5.2.8",
-        "@fontsource/lato": "^5.2.7",
-        "@fontsource/league-gothic": "^5.2.8"
-    }
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "jigsaw build production && vite build",
+    "build:local": "jigsaw build && vite build",
+    "prod": "jigsaw build production && vite build --mode production"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.18",
+    "@tighten/jigsaw-vite-plugin": "^1.0.0",
+    "alpinejs": "^3.14.1",
+    "fuse.js": "^6.4.6",
+    "tailwindcss": "^4.1.18",
+    "vite": "^6.2.1"
+  },
+  "dependencies": {
+    "@fontsource-variable/ibm-plex-sans": "^5.2.8",
+    "@fontsource-variable/pixelify-sans": "^5.2.7",
+    "@fontsource/instrument-serif": "^5.2.8",
+    "@fontsource/lato": "^5.2.7",
+    "@fontsource/league-gothic": "^5.2.8"
+  }
 }

@@ -3,7 +3,7 @@ title: Blog
 description: The list of blog posts for the site
 pagination:
     collection: posts
-    perPage: 4
+    perPage: 9
 ---
 @extends('_layouts.main')
 
@@ -21,12 +21,12 @@ pagination:
     @endforeach
 
     @if ($pagination->pages->count() > 1)
-        <nav class="flex text-base my-8">
+        <nav class="flex text-base my-8 bg-red-900">
             @if ($previous = $pagination->previous)
                 <a
                     href="{{ $previous }}"
                     title="Previous Page"
-                    class="bg-gray-200 hover:bg-gray-400 rounded mr-3 px-5 py-3"
+                    class="hover:bg-gray-400 rounded mr-3 px-5 py-3"
                 >&LeftArrow;</a>
             @endif
 
@@ -34,7 +34,7 @@ pagination:
                 <a
                     href="{{ $path }}"
                     title="Go to Page {{ $pageNumber }}"
-                    class="bg-gray-200 hover:bg-gray-400 rounded mr-3 px-5 py-3 {{ $pagination->currentPage == $pageNumber ? 'text-blue-600' : 'text-blue-700' }}"
+                    class="hover:bg-red-400 mr-3 px-5 py-3 {{ $pagination->currentPage == $pageNumber ? 'text-green-900' : 'text-yellow-900' }}"
                 >{{ $pageNumber }}</a>
             @endforeach
 
@@ -42,7 +42,7 @@ pagination:
                 <a
                     href="{{ $next }}"
                     title="Next Page"
-                    class="bg-gray-200 hover:bg-gray-400 rounded mr-3 px-5 py-3"
+                    class="hover:bg-gray-400 rounded mr-3 px-5 py-3"
                 >&RightArrow;</a>
             @endif
         </nav>

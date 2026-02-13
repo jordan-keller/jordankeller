@@ -115,10 +115,10 @@ class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal
         <h1 class="text-lg md:text-xl my-0 antialiased tracking-wide">{{ $page->siteName }} //</h1>
     </a>
     
-    <span class="relative antialiased pl-1 italic font-thin tracking-wide">
+    <span class="relative antialiased italic font-normal tracking-wide">
         <button 
             @click="themeDropdownOpen = !themeDropdownOpen"
-            class="px-2 py-1 rounded text-lg font-light hover:underline ml-0 font-[var(--heading-font)] text-[var(--text)]"
+            class="py-1 rounded text-lg font-light hover:underline ml-0 font-[var(--heading-font)] text-[var(--text)]"
             style="
                 font-size: 20px; 
                 font-weight: 200;
