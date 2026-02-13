@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "./vendor/bin/jigsaw build production && vite build",
+    "build": "vite build",
     "build:local": "jigsaw build && vite build",
     "prod": "jigsaw build production && vite build --mode production"
   },

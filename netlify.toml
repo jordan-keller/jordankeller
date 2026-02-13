@@ -1,6 +1,6 @@
 [build]
-  command = "npm run build"
-  publish = "build_local"
+  command = "composer install --no-dev && npm run build"
+  publish = "build_production"
 
 # Optional: Skip builds on develop branch
 [context.develop]
