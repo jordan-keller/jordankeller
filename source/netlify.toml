@@ -1,10 +1,11 @@
 [build]
   command = "composer install --no-dev --prefer-dist && npm run build"
+  publish = "build_production"
 
 [context.develop]
-  command = "composer install && ./vendor/bin/jigsaw build local && vite build"
+  command = "composer install && npm run build"
   publish = "build_local"
 
 [context.production]
-  command = "composer install --no-dev && ./vendor/bin/jigsaw build production && vite build"
+  command = "composer install --no-dev --prefer-dist && npm run build"
   publish = "build_production"
