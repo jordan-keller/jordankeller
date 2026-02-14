@@ -13,4 +13,4 @@ cat > netlify.toml << 'EOF'
 [context.branch-deploy]
   command = "composer install --no-dev --prefer-dist && npm run build && vendor/bin/jigsaw build local"
   publish = "build_local"
-EOF
+EOF 
