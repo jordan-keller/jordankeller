@@ -1,11 +1,14 @@
 [build]
-  command = "npm run build"
-  publish = "build_production"
-
-[context.develop]
-  command = "npm run build"
-  publish = "build_local"
+command = "composer install --no-interaction --prefer-dist && npm run build"
 
 [context.production]
   command = "npm run build"
   publish = "build_production"
+
+[context.deploy-preview]
+  command = "npm run build:dev"
+  publish = "build_local"
+
+[context.branch-deploy]
+  command = "npm run build:dev"
+  publish = "build_local"
