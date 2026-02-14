@@ -4,34 +4,34 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="{{ $page->description ?? $page->siteDescription }}">
+    <meta name="description" content="<?php echo e($page->description ?? $page->siteDescription); ?>">
 
-    <meta property="og:title" content="{{ $page->title ? $page->title . ' | ' : '' }}{{ $page->siteName }}"/>
-    <meta property="og:type" content="{{ $page->type ?? 'website' }}" />
-    <meta property="og:url" content="{{ $page->getUrl() }}"/>
-    <meta property="og:description" content="{{ $page->description ?? $page->siteDescription }}" />
+    <meta property="og:title" content="<?php echo e($page->title ? $page->title . ' | ' : ''); ?><?php echo e($page->siteName); ?>"/>
+    <meta property="og:type" content="<?php echo e($page->type ?? 'website'); ?>" />
+    <meta property="og:url" content="<?php echo e($page->getUrl()); ?>"/>
+    <meta property="og:description" content="<?php echo e($page->description ?? $page->siteDescription); ?>" />
 
-    <title>{{ $page->title ?  $page->title . ' | ' : '' }}{{ $page->siteName }}</title>
+    <title><?php echo e($page->title ?  $page->title . ' | ' : ''); ?><?php echo e($page->siteName); ?></title>
 
-    <link rel="home" href="{{ $page->baseUrl }}">
+    <link rel="home" href="<?php echo e($page->baseUrl); ?>">
     <link rel="icon" href="/favicon.ico">
-    <link href="/blog/feed.atom" type="application/atom+xml" rel="alternate" title="{{ $page->siteName }} Atom Feed">
+    <link href="/blog/feed.atom" type="application/atom+xml" rel="alternate" title="<?php echo e($page->siteName); ?> Atom Feed">
 
-    @if ($page->production)
+    <?php if($page->production): ?>
         <!-- Insert analytics code here -->
-    @endif
+    <?php endif; ?>
 
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet" />
 
-    {{-- Theme configuration - must load before Alpine --}}
+    
     <script>
-        window.themeConfig = {!! json_encode($page->themes) !!};
+        window.themeConfig = <?php echo json_encode($page->themes); ?>;
     </script>
 
-    @viteRefresh()
-    <link rel="stylesheet" href="{{ $page->baseUrl }}/assets/build/main.css">
-    <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
+    <?php echo vite_refresh(); ?>
+    <link rel="stylesheet" href="<?php echo e(asset('assets/build/main.css')); ?>">
+    <script defer type="module" src="<?php echo e(vite('source/_assets/js/main.js')); ?>"></script>
     </head>
     
     <body 
@@ -117,8 +117,8 @@ class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal
     <div class="container flex items-center max-w-8xl sm:max-w-full mx-auto px-4 lg:px-8 border-b-1 border-[var(--text)]/30">
           
         <span class="flex items-center">
-    <a href="/" title="{{ $page->siteName }} home" class="inline-flex items-center decoration-transparent">
-        <h1 class="text-lg md:text-xl my-0 antialiased tracking-wide">{{ $page->siteName }} //</h1>
+    <a href="/" title="<?php echo e($page->siteName); ?> home" class="inline-flex items-center decoration-transparent">
+        <h1 class="text-lg md:text-xl my-0 antialiased tracking-wide"><?php echo e($page->siteName); ?> //</h1>
     </a>
     
     <span class="relative antialiased italic font-normal tracking-wide">
@@ -156,26 +156,26 @@ class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal
 </span>
 
             <span class="flex flex-1 justify-end items-end gap-4 font-sans text-sm">
-            @include('_nav.menu')
-            @include('_nav.menu-toggle')
+            <?php echo $__env->make('_nav.menu', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
+            <?php echo $__env->make('_nav.menu-toggle', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
         </span>
     </div>
 </header>
 
-        @include('_nav.menu-responsive')
+        <?php echo $__env->make('_nav.menu-responsive', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
         <main role="main" class="flex-auto w-full container max-w-4xl mx-auto py-8 px-8"
       x-init="$nextTick(() => { filterPosts(theme); showHero(theme); })">
-            @yield('body')
+            <?php echo $__env->yieldContent('body'); ?>
         </main>
 
         <footer class="bg-bg text-center text-sm mt-12 py-4" role="contentinfo">
          <div class="w-80 mx-auto">     
-            @include('_components.search')
+            <?php echo $__env->make('_components.search', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
             </div>
             <ul class="flex flex-col md:flex-row justify-center list-none">
                 <li class="md:mr-2">
-                    &copy; <a href="https://tighten.co" title="Tighten website">Tighten</a> {{ date('Y') }}.
+                    &copy; <a href="https://tighten.co" title="Tighten website">Tighten</a> <?php echo e(date('Y')); ?>.
                 </li>
                 <li>
                     Built with <a href="http://jigsaw.tighten.co" title="Jigsaw by Tighten">Jigsaw</a>
@@ -186,6 +186,6 @@ class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal
 
         <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
-        @stack('scripts')
+        <?php echo $__env->yieldPushContent('scripts'); ?>
     </body>
-</html>
+</html><?php /**PATH /Users/Jordan/Herd/jordankeller/source/_layouts/main.blade.php ENDPATH**/ ?>
