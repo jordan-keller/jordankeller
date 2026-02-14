@@ -1,16 +1,17 @@
 @extends('_layouts.main')
 
 @section('body')
+    <div x-init="
+        $nextTick(() => {
+            filterPosts(theme);
+            showHero(theme);
+        });
+    ">
+    
     {{-- Theme-specific hero sections --}}
     @foreach($page->themes as $themeKey => $themeConfig)
         <div class="hero-section mb-12 hidden" data-theme-hero="{{ $themeKey }}">
             @if(isset($themeConfig['hero']))
-                
-                {{-- <span>
-                <img src="{{ $themeConfig['hero']['image'] }}" 
-                     alt="Hero image" 
-                     class="w-auto h-64 object-cover mb-4">
-                </span> --}}
                 <span class="offset-x-10">
                 <h1 class="text-7xl font-bold mb-2">{{ $themeConfig['hero']['heading'] }}</h1>
                 <h2 class="text-3xl opacity-80">{{ $themeConfig['hero']['subheading'] }}</h2>
@@ -117,5 +118,8 @@
             <hr class="w-full border-b mt-2 mb-6 post-separator">
         @endif
     @endforeach
+
+</div> 
+@stop
 
 @stop

@@ -206,19 +206,22 @@ class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal
 </nav>
 
         <main role="main" class="flex-auto w-full container max-w-4xl mx-auto py-8 px-8">
-                
+                <div x-init="
+        $nextTick(() => {
+            filterPosts(theme);
+            showHero(theme);
+        });
+    ">
+    
+    
             <div class="hero-section mb-12 hidden" data-theme-hero="human">
-                            
-                
-                <span class="offset-x-10">
+                            <span class="offset-x-10">
                 <h1 class="text-7xl font-bold mb-2">All Posts</h1>
                 <h2 class="text-3xl opacity-80">The everything feed</h2>
                 </span>
                     </div>
             <div class="hero-section mb-12 hidden" data-theme-hero="musician">
-                            
-                
-                <span class="offset-x-10">
+                            <span class="offset-x-10">
                 <h1 class="text-7xl font-bold mb-2">Music</h1>
                 <h2 class="text-3xl opacity-80">Songwriting, production, and musical musings.</h2>
                 </span>
