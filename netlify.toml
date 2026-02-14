@@ -4,3 +4,14 @@
 
 [build.environment]
   PHP_VERSION = "8.2"
+
+[context.production]
+  command = "composer install --no-dev --optimize-autoloader && npm ci && ./vendor/bin/jigsaw build production && vite build"
+
+[context.deploy-preview]
+  command = "composer install --no-dev --optimize-autoloader && npm ci && JIGSAW_ENV=staging ./vendor/bin/jigsaw build staging && vite build"
+  publish = "build_staging"
+
+[context.branch-deploy]
+  command = "composer install --no-dev --optimize-autoloader && npm ci && JIGSAW_ENV=staging ./vendor/bin/jigsaw build staging && vite build"
+  publish = "build_staging"
