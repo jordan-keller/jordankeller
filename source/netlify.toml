@@ -1,8 +1,8 @@
 cat > netlify.toml << 'EOF'
 [build]
-  command = "npm run build"
-  publish = "build_local"
-  
+  command = "composer install --no-dev --optimize-autoloader && npm ci && npm run build"
+  publish = "build_production"
+
 [build.environment]
   PHP_VERSION = "8.2"
 

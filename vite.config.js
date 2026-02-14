@@ -10,4 +10,8 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
+  build: {
+    outDir: "build_local/build",
+    emptyOutDir: true,
+  },
 });

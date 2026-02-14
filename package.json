@@ -2,7 +2,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "composer install --no-dev --optimize-autoloader && ./vendor/bin/jigsaw build production && vite build"
+    "dev": "npm run development",
+    "development": "jigsaw build && vite build",
+    "watch": "jigsaw build && vite build --watch",
+    "build": "./vendor/bin/jigsaw build production && vite build --mode production"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
