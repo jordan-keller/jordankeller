@@ -1,15 +1,18 @@
 [build]
-  command = "npm run build"
+  command = "composer install --no-dev --optimize-autoloader && npm run build"
   publish = "build_production"
 
 [context.production]
-  command = "npm run build"
+  command = "composer install --no-dev --optimize-autoloader && npm run build"
   publish = "build_production"
 
 [context.develop]
-  command = "npm run build:dev"
+  command = "composer install --no-dev --optimize-autoloader && npm run build:dev"
   publish = "build_local"
 
 [context.branch-deploy]
-  command = "npm run build:dev"
+  command = "composer install --no-dev --optimize-autoloader && npm run build:dev"
   publish = "build_local"
+
+[build.environment]
+  PHP_VERSION = "8.2"
