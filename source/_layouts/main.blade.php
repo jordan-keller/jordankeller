@@ -25,13 +25,15 @@
     <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet" />
 
     {{-- Theme configuration - must load before Alpine --}}
-<script>
-    window.themeConfig = {!! json_encode($page->themes) !!};
-</script>
+    <script>
+        window.themeConfig = {!! json_encode($page->themes) !!};
+    </script>
 
-@viteRefresh()
-<link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
-<script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
+    @viteRefresh()
+    <link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
+    <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
+    </head>
+    
     <body 
 x-data="{
     theme: localStorage.getItem('theme') || 'human',
