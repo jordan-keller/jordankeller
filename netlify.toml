@@ -1,0 +1,16 @@
+cat > netlify.toml << 'EOF'
+[build]
+  command = "composer install --no-dev --optimize-autoloader && npm ci && npm run build"
+  publish = "build_production"
+
+[build.environment]
+  PHP_VERSION = "8.2"
+
+[context.develop]
+  command = "composer install --no-dev --prefer-dist && npm run build && vendor/bin/jigsaw build local"
+  publish = "build_local"
+
+[context.branch-deploy]
+  command = "composer install --no-dev --prefer-dist && npm run build && vendor/bin/jigsaw build local"
+  publish = "build_local"
+EOF
