@@ -30,10 +30,8 @@
 </script>
 
 @viteRefresh()
-    <link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
-    <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
-</head>
-
+<link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
+<script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
     <body 
 x-data="{
     theme: localStorage.getItem('theme') || 'human',

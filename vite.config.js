@@ -3,6 +3,8 @@ import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig(({ mode }) => {
+  const isProduction = mode === "production";
+
   return {
     plugins: [
       jigsaw({
@@ -11,9 +13,9 @@ export default defineConfig(({ mode }) => {
       }),
       tailwindcss(),
     ],
-    base: "/", // Always use root path
+    base: isProduction ? "/build_production/" : "/",
     build: {
-      outDir: mode === "production" ? "build_production" : "build_local",
+      outDir: isProduction ? "build_production" : "build_local",
       manifest: true,
       emptyOutDir: true,
       rollupOptions: {

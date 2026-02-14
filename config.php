@@ -11,7 +11,10 @@ return [
     'pretty_urls' => true,
     'parseMarkdownWithBlade' => true,
 
-    // Theme Configuration
+    'vite' => [
+        'build_path' => 'assets/build',
+    ],
+    
     'defaultTheme' => 'human',
     'themes' => [
         'human' => [
