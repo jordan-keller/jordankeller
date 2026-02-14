@@ -3,8 +3,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "composer install && ./vendor/bin/jigsaw build production && vite build",
-    "build:dev": "composer install && ./vendor/bin/jigsaw build local && vite build"
+    "build": "vite build",
+    "build:dev": "vite build --mode development"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
