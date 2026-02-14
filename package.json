@@ -2,10 +2,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "npm run development",
-    "development": "jigsaw build && vite build",
-    "watch": "jigsaw build && vite build --watch",
-    "build": "./vendor/bin/jigsaw build production && vite build --mode production"
+    "dev": "jigsaw build && vite",
+    "build": "./vendor/bin/jigsaw build production && vite build"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
