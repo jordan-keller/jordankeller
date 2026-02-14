@@ -2,7 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "jigsaw build && vite",
+    "dev": "./vendor/bin/jigsaw build && vite",
     "build": "vite build"
   },
   "devDependencies": {

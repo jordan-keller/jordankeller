@@ -24,13 +24,18 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet" />
 
+        <!-- Custom Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:opsz,wght@8..24,400..700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100..700&display=swap" rel="stylesheet">
+
     {{-- Theme configuration - must load before Alpine --}}
     <script>
         window.themeConfig = {!! json_encode($page->themes) !!};
     </script>
 
     @viteRefresh()
-    <link rel="stylesheet" href="{{ $page->baseUrl }}/assets/build/main.css">
+    <link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
     <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
     </head>
     
@@ -38,14 +43,6 @@
 x-data="{
     theme: localStorage.getItem('theme') || 'human',
     themeDropdownOpen: false,
-    <!-- Font/CSS load test block: Remove after verifying deploy! -->
-    <div style="padding:1em; background:#222; color:#fff; font-family:var(--font-body); border-bottom:2px solid #5e971d;">
-        <strong>Font Test:</strong> This text should use your <span style="font-family:var(--font-body);">body font</span> and <span style="font-family:var(--font-heading);">heading font</span>.<br>
-        <span style="font-family:'Pixelify Sans Variable',sans-serif;">Pixelify Sans Variable</span> |
-        <span style="font-family:'League Gothic',sans-serif;">League Gothic</span> |
-        <span style="font-family:'Instrument Serif',serif;">Instrument Serif</span> |
-        <span style="font-family:'IBM Plex Sans Variable',sans-serif;">IBM Plex Sans Variable</span>
-    </div>
     themeDropdown: {
         open: false,
         theme: localStorage.getItem('theme') || 'human'
