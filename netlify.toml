@@ -1,5 +1,5 @@
 [build]
-  command = "composer install --no-dev --optimize-autoloader && npm ci && npm run build"
+  command = "npm ci && npm run build && ./vendor/bin/jigsaw build production"
   publish = "build_production"
 
 [build.environment]
@@ -9,8 +9,8 @@
   command = "composer install --no-dev --optimize-autoloader && npm ci && ./vendor/bin/jigsaw build production && vite build"
 
 [context.deploy-preview]
-  command = "composer install --no-dev --optimize-autoloader && npm ci && JIGSAW_ENV=staging ./vendor/bin/jigsaw build staging && vite build"
-  publish = "build_staging"
+  command = "npm ci && npm run dev && ./vendor/bin/jigsaw build"
+  publish = "build_local"
 
 [context.branch-deploy]
   command = "composer install --no-dev --optimize-autoloader && npm ci && JIGSAW_ENV=staging ./vendor/bin/jigsaw build staging && vite build"

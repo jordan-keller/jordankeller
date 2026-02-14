@@ -6,7 +6,7 @@ return [
     'baseUrl' => 'http://jordankeller.test/',
     'production' => false,
     'siteName' => 'Jordan Keller',
-    'siteDescription' => 'Jordan Keller is a writer, producer, and musician based in Grand Rapids, Michigan.',
+    'siteDescription' => 'Writer, producer, and musician in Grand Rapids, Michigan.',
     'siteAuthor' => 'Jordan Keller',
     'pretty_urls' => true,
     'parseMarkdownWithBlade' => true,

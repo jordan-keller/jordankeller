@@ -30,7 +30,7 @@
     </script>
 
     @viteRefresh()
-    <link rel="stylesheet" href="{{ vite('source/_assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/build/main.css') }}">
     <script defer type="module" src="{{ vite('source/_assets/js/main.js') }}"></script>
     </head>
     
@@ -38,6 +38,14 @@
 x-data="{
     theme: localStorage.getItem('theme') || 'human',
     themeDropdownOpen: false,
+    <!-- Font/CSS load test block: Remove after verifying deploy! -->
+    <div style="padding:1em; background:#222; color:#fff; font-family:var(--font-body); border-bottom:2px solid #5e971d;">
+        <strong>Font Test:</strong> This text should use your <span style="font-family:var(--font-body);">body font</span> and <span style="font-family:var(--font-heading);">heading font</span>.<br>
+        <span style="font-family:'Pixelify Sans Variable',sans-serif;">Pixelify Sans Variable</span> |
+        <span style="font-family:'League Gothic',sans-serif;">League Gothic</span> |
+        <span style="font-family:'Instrument Serif',serif;">Instrument Serif</span> |
+        <span style="font-family:'IBM Plex Sans Variable',sans-serif;">IBM Plex Sans Variable</span>
+    </div>
     themeDropdown: {
         open: false,
         theme: localStorage.getItem('theme') || 'human'
@@ -102,7 +110,7 @@ x-init="
     }, 100);
 "
 :data-theme="theme"
-class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal font-body"
+class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal"
 >
 
         <header class="flex items-center h-24 py-4" role="banner">

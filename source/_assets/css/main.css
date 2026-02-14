@@ -15,9 +15,20 @@
     --text: #e0e0e0;
     --link: #5e971d;
     --link-hover: #73d13d;
-    --font-body: "Lato", sans-serif;
+    --font-body: "IBM Plex Sans Variable", sans-serif;
     --font-heading: "Instrument Serif", serif;
     --shadow-search: 0 -1px 27px 0 rgba(0, 0, 0, 0.04);
+  }
+
+  /* Theme-specific font overrides */
+  [data-theme="human"] {
+    --font-body: "IBM Plex Sans Variable", sans-serif;
+    --font-heading: "Instrument Serif", serif;
+  }
+
+  [data-theme="musician"] {
+    --font-body: "Pixelify Sans Variable", sans-serif;
+    --font-heading: "League Gothic", sans-serif;
   }
 
   body {

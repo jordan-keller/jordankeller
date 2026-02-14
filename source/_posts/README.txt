@@ -1,3 +1,12 @@
+# Overivew
+You're building a Jigsaw static site, styled with tailwind, templated with blade. You have successfully set up your site to work on Netlify. You've setup a develop branch so that you can preview deploys before committing and burning credits. 
+
+Current problem:
+## `main.blade.php` is not rendering the main `index.blade.php` correctly.
+When I click into a post the CSS works great. But when I go back to the main / index the style goes away. Specifically the dynamic theme funciton I built no longer works. Take a look at how main.blade.php calls in the and how index.blade.php works vs. how post.blade.php works:
+
+
+
 GHOST TO MARKDOWN CONVERSION SUMMARY
 =====================================
 

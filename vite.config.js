@@ -3,15 +3,13 @@ import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  plugins: [
-    jigsaw({
-      input: ["source/_assets/js/main.js", "source/_assets/css/main.css"],
-      refresh: true,
-    }),
-    tailwindcss(),
-  ],
+  root: "source/_assets",
   build: {
-    outDir: "build_local/build",
+    outDir: "../assets/build",
     emptyOutDir: true,
+    manifest: true,
+    rollupOptions: {
+      input: "/css/main.css",
+    },
   },
 });

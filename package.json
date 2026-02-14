@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "jigsaw build && vite",
-    "build": "./vendor/bin/jigsaw build production && vite build"
+    "build": "vite build"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
