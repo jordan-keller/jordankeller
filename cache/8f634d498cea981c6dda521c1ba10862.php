@@ -97,8 +97,6 @@ x-data="{
 x-init="
     setTimeout(() => {
         setTheme(theme);
-        filterPosts(theme);
-        showHero(theme);
     }, 100);
 "
 :data-theme="theme"
@@ -156,7 +154,8 @@ class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal
 
         <?php echo $__env->make('_nav.menu-responsive', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?>
 
-        <main role="main" class="flex-auto w-full container max-w-4xl mx-auto py-8 px-8">
+        <main role="main" class="flex-auto w-full container max-w-4xl mx-auto py-8 px-8"
+      x-init="$nextTick(() => { filterPosts(theme); showHero(theme); })">
             <?php echo $__env->yieldContent('body'); ?>
         </main>
 
