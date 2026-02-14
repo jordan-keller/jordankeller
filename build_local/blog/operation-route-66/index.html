@@ -26,8 +26,8 @@
     window.themeConfig = {"human":{"label":"Human","categories":[],"hero":{"image":"\/assets\/img\/human-hero.jpg","heading":"All Posts","subheading":"The everything feed"},"about_content":"about-default.md","about_image":"\/assets\/img\/about-default.png"},"musician":{"label":"Musician","categories":["music"],"hero":{"image":"\/assets\/img\/musician-hero.jpg","heading":"Music","subheading":"Songwriting, production, and musical musings."},"about_content":"\/about\/musician.md","about_image":"\/assets\/img\/musician.png"}};
 </script>
 
-<script type="module" src="http://[::1]:5173/@vite/client"></script><link rel="stylesheet" href="http://[::1]:5173/source/_assets/css/main.css">
-<script defer type="module" src="http://[::1]:5173/source/_assets/js/main.js"></script>
+<link rel="stylesheet" href="/assets/build/assets/main-dreAXwQO.css">
+<script defer type="module" src="/assets/build/assets/main-4_rUXtX6.js"></script>
     <body 
 x-data="{
     theme: localStorage.getItem('theme') || 'human',
@@ -93,8 +93,6 @@ x-data="{
 x-init="
     setTimeout(() => {
         setTheme(theme);
-        filterPosts(theme);
-        showHero(theme);
     }, 100);
 "
 :data-theme="theme"
@@ -205,7 +203,8 @@ class="flex flex-col justify-between min-h-screen bg-bg text-text leading-normal
     </ul>
 </nav>
 
-        <main role="main" class="flex-auto w-full container max-w-4xl mx-auto py-8 px-8">
+        <main role="main" class="flex-auto w-full container max-w-4xl mx-auto py-8 px-8"
+      x-init="$nextTick(() => { filterPosts(theme); showHero(theme); })">
             
                         <a
                 href="/blog/categories/music"
