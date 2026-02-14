@@ -1,12 +1,12 @@
 {
   "private": true,
   "type": "module",
+{
   "scripts": {
-    "dev": "vite",
     "build": "composer install && ./vendor/bin/jigsaw build production && vite build",
-    "build:local": "jigsaw build && vite build",
-    "prod": "jigsaw build production && vite build --mode production"
-  },
+    "build:dev": "composer install && ./vendor/bin/jigsaw build local && vite build"
+  }
+},
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "@tighten/jigsaw-vite-plugin": "^1.0.0",
