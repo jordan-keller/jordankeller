@@ -2,9 +2,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "build:dev": "vite build --mode development"
+    "build": "composer install --no-dev --prefer-dist --no-interaction && ./vendor/bin/jigsaw build production && vite build"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.18",
