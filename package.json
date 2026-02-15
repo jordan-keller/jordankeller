@@ -19,7 +19,6 @@
     "@fontsource/ibm-plex-sans": "^5.2.8",
     "@fontsource/instrument-serif": "^5.2.8",
     "@fontsource/lato": "^5.2.7",
-    "@fontsource/league-gothic": "^5.2.8",
-    "@netlify/vite-plugin": "^2.9.0"
+    "@fontsource/league-gothic": "^5.2.8"
   }
 }

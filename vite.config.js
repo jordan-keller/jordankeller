@@ -1,7 +1,6 @@
 import jigsaw from "@tighten/jigsaw-vite-plugin";
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
-import netlify from "@netlify/vite-plugin";
 
 export default defineConfig({
   plugins: [
@@ -10,6 +9,5 @@ export default defineConfig({
       refresh: true,
     }),
     tailwindcss(),
-    netlify(),
   ],
 });
