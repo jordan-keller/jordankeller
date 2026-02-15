@@ -6,7 +6,7 @@ subtitle:
 date: 2015-03-08
 description: Original score for the documentary
 type: music
-categories: score
+categories: [score]
 tags: operation route 66, movie score, film score
 cover_image: "../assets/img/operation-route-66.webp"
 featured: true

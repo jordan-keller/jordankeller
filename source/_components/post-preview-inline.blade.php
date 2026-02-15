@@ -1,7 +1,4 @@
 <div class="flex flex-col mb-4">
-    <p class="text-text font-medium my-2">
-        {{ $post->getDate()->format('F j, Y') }}
-    </p>
 
     <h2 class="text-3xl mt-0">
         <a

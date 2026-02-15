@@ -6,7 +6,7 @@ subtitle:
 date: 2023-10-18
 description: "A look at the cinematic storytelling techniques of a slow-burn, coming-of-age indie horror movie that asks the most important spiritual question of our times: 'What if the internet's a demon we summon into our lives by posting on it?'"
 type: essay
-categories: [Analysis]
+categories: [analysis]
 tags: horror, cinematic storytelling
 cover_image:
 featured: false

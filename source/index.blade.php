@@ -64,7 +64,7 @@
         @else
             {{-- Layout without image: full width --}}
 
-        
+    
             <h2 class="text-3xl mt-0">
                 <a href="{{ $featuredPost->getUrl() }}" title="Read {{ $featuredPost->title }}" class="text-link font-extrabold">
                     {{ $featuredPost->title }}

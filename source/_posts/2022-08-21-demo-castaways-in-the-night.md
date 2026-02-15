@@ -6,7 +6,7 @@ subtitle:
 date: 2022-08-21
 description: Quit yer doomscrolling and listen to this moony lullaby instead
 type: music
-categories: song
+categories: [song]
 tags: the okay lakes, castaways in the night
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false

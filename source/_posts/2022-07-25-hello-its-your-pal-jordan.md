@@ -6,7 +6,7 @@ subtitle:
 date: 2022-07-25
 description: I have some songs I want to share with you
 type: newsletter
-categories: blog
+categories: [blog]
 tags: the okay lakes, music, newsletter
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
