@@ -5,7 +5,9 @@ title: "Hello. It's your pal, Jordan."
 subtitle:
 date: 2022-07-25
 description: I have some songs I want to share with you
-categories: [music, the okay lakes]
+type: newsletter
+categories: blog
+tags: the okay lakes, music, newsletter
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

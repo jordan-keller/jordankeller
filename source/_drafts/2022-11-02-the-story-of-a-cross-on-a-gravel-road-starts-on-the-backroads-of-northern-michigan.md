@@ -5,7 +5,9 @@ title: "The story of 'A Cross on a Gravel Road' starts on the backroads of north
 subtitle:
 date: 2022-11-02
 description: The rest of the song of 'A Cross on a Gravel Road' took a long time to find. And when it finally arrived, it lit the way for the rest of the album’s songs to follow. The central image, however, was immediate.
-categories: [music, the okay lakes]
+type: newsletter
+tags:
+categories:
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

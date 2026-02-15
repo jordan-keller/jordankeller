@@ -5,9 +5,9 @@ title: "How to make peace with the unsatisfying grunt labor of writing"
 subtitle:
 date: 2023-06-21
 description: On Rick Bass, the spirituality of working at your craft, and fighting for what makes you feel free
-type:
-categories: [blog, essay]
-tags:
+type: essay
+categories: [analysis]
+tags: craft, writing, storytelling, rick bass,
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

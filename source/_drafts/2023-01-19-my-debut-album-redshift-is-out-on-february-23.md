@@ -5,7 +5,10 @@ title: "My debut album Redshift is out on February 23"
 subtitle:
 date: 2023-01-19
 description: "Watch the album art trailer and get details on the album release show at Hideout in Chicago"
-categories: [redshift, the okay lakes, album]
+type:
+tags:
+categories: newsletter
+categories_legacy: [redshift, the okay lakes, album]
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

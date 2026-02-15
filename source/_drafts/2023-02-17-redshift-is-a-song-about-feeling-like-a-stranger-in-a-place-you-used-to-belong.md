@@ -5,7 +5,10 @@ title: "Redshift is a song about feeling like a stranger in a place you used to 
 subtitle:
 date: 2023-02-17
 description: "Hear the title track off the album (out next week!)"
-categories: [redshift (song), the okay lakes, single]
+type: newsletter
+tags:
+categories: newsletter
+categories_legacy: [redshift (song), the okay lakes, single]
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

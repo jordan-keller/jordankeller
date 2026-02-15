@@ -4,8 +4,11 @@ section: content
 title: "A Cross on a Gravel Road"
 subtitle:
 date: 2023-02-23
-description: 
-categories: [a cross on a gravel road, lyrics, songwriting, redshift]
+description:
+type:
+tags:
+categories:
+categories_legacy: [a cross on a gravel road, lyrics, songwriting, redshift]
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

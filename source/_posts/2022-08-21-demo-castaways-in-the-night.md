@@ -1,11 +1,13 @@
 ---
 extends: _layouts.post
 section: content
-title: "DEMO:\ Castaways in the Night"
+title: "Castaways in the Night"
 subtitle:
 date: 2022-08-21
 description: Quit yer doomscrolling and listen to this moony lullaby instead
-categories: [music, the okay lakes]
+type: music
+categories: song
+tags: the okay lakes, castaways in the night
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

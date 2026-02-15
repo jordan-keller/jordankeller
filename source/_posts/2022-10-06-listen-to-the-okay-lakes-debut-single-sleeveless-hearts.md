@@ -5,7 +5,9 @@ title: "Listen to The Okay Lakes' debut single, Sleeveless Hearts"
 subtitle:
 date: 2022-10-06
 description: Check out the first single off my upcoming debut album, Redshift
-categories: [music, the okay lakes]
+type: newsletter
+tags: single, sleeveless hearts, the okay lakes
+categories: [song]
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

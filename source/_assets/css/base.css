@@ -7,7 +7,7 @@ body {
 }
 
 a {
-  @apply text-[var(--text)] underline underline-offset-5 decoration-[var(--link)] decoration-1 transition-all duration-300 hover:tracking-wider;
+  @apply text-[var(--text)] underline underline-offset-5 decoration-[var(--link)] decoration-1;
 }
 
 a:hover,

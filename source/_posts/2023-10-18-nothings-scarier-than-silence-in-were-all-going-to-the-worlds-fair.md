@@ -5,9 +5,9 @@ title: Nothing's scarier than silence in We're All Going to the World's Fair
 subtitle:
 date: 2023-10-18
 description: "A look at the cinematic storytelling techniques of a slow-burn, coming-of-age indie horror movie that asks the most important spiritual question of our times: 'What if the internet's a demon we summon into our lives by posting on it?'"
-type: [essay]
-categories: [cinematic storytelling]
-tags: horror, cinematic storytelling,
+type: essay
+categories: [Analysis]
+tags: horror, cinematic storytelling
 cover_image:
 featured: false
 ---

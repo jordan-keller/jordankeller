@@ -4,8 +4,11 @@ section: content
 title: "Days Burn Down"
 subtitle:
 date: 2023-02-23
-description: 
-categories: [lyrics, days burn down, redshift]
+description:
+type:
+tags:
+categories:
+categories_legacy: [lyrics, days burn down, redshift]
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

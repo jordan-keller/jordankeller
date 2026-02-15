@@ -5,7 +5,10 @@ title: "Cracks is an art-folk tone poem about the dueling brutality/beauty of Ch
 subtitle:
 date: 2023-01-27
 description: A simple, windswept, string-laden guitar tune that sounds best when played with frost-bitten fingers
-categories: [music, the okay lakes]
+type:
+tags:
+categories: newsletter
+categories_legacy: [music, the okay lakes]
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

@@ -5,7 +5,10 @@ title: "How I made my new song A Cross on a Gravel Road"
 subtitle:
 date: 2022-11-03
 description: An anthem to soundtrack late-night drives on the back roads
-categories: [music, the okay lakes]
+type:
+tags:
+categories: newsletter
+categories_legacy: [music, the okay lakes]
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

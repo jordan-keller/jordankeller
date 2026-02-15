@@ -5,7 +5,9 @@ title: "Sleeveless Hearts (Music Video)"
 subtitle:
 date: 2022-10-19
 description: If you ever had a night like this... may you never again
-categories: [music, the okay lakes, video]
+type: video
+tags: the okay lakes, sleeveless hearts, music video
+categories: [music video]
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

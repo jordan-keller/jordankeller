@@ -5,7 +5,11 @@ title: "Kill the part of you that cringes"
 subtitle:
 date: 2023-06-01
 description: Let he who has not been cringe cast the first ironically detached subtweet
-categories: [blog, essay]
+type: Essay
+categories:
+  - blog
+  - essay
+tags:
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: true
 ---

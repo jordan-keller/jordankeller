@@ -5,7 +5,9 @@ title: "Watch the album trailer for Redshift"
 subtitle:
 date: 2022-09-07
 description: Get a peek inside Shirk Studios and Populist Studios at the work of crafting the debut Okay Lakes album, 'Redshift'
-categories: [music, the okay lakes]
+type: video
+categories: album trailer
+tags: the okay lakes, redshift, album art, song art
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

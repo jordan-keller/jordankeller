@@ -5,8 +5,8 @@ title: "I joined a band 3 months before leaving Chicago"
 subtitle:
 date: 2026-02-06
 description: Live recordings of four songs performed by four humans playing at the same time in the same room
-type: [video]
-categories: [live music]
+type: video
+categories: [live performance]
 tags: charles austin, brock winthrop, asian kung-fu generation, live music
 cover_image: ""
 featured: true

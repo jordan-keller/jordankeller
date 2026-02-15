@@ -5,9 +5,9 @@ title: "Mike Viola’s “Paul McCarthy” is an open love letter to classic roc
 subtitle:
 date: 2023-09-20
 description: An album review (sorta), but mostly a look at the craft of veteran songwriter/producer operating at the top of his game
-type: [essay]
-categories: [songwriting]
-tags: mike viola, lyric writing,
+type: essay
+categories: [analysis]
+tags: mike viola, lyric writing
 cover_image: "../assets/img/essay/mike-viola.jpeg"
 featured: false
 ---

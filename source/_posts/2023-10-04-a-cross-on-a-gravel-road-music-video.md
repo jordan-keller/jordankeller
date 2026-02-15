@@ -5,9 +5,9 @@ title: "A Cross on a Gravel Road (Music Video)"
 subtitle:
 date: 2023-10-04
 description: WARNING:\ Spirits in the mirror are closer than they appear in this midwest ghost story.
-type: [music video]
-categories: [the okay lakes]
-tags: a cross on a gravel road, storytelling, scriptwriting
+type: video
+categories: [music video]
+tags: the okay lakes, a cross on a gravel road
 cover_image: "../assets/img/the-okay-lakes/music-video/cross.jpeg"
 featured: true
 ---

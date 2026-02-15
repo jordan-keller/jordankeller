@@ -5,7 +5,9 @@ title: "The groove for Sleeveless Hearts haunted me for a decade"
 subtitle:
 date: 2022-10-05
 description: If you had told me back then—in 2012, jeesh—how long it would take to figure out where to go with this hypnotic little groove, I’m not sure I’d’ve kept at it. But for 7-8 years, I kept sporadically returning to and abandoning this idea. It, in turn, did the same.
-categories: [music, the okay lakes]
+type: newsletter
+tags: music, sleeveless hearts, the okay lakes
+categories: [liner notes]
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

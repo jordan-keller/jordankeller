@@ -33,7 +33,7 @@
                      class="w-1/3 h-fit object-cover border-[var(--text)]/30 border-2">
                 
                 <div class="w-2/3">
-                    <p class="text-text opacity-60 font-medium my-2">
+                    <p class="text-text opacity-80 font-medium my-2">
                         {{ $featuredPost->getDate()->format('F j, Y') }}
                     </p>
 
@@ -63,15 +63,16 @@
             </div>
         @else
             {{-- Layout without image: full width --}}
-            <p class="text-text opacity-60 font-medium my-2">
-                {{ $featuredPost->getDate()->format('F j, Y') }}
-            </p>
 
+        
             <h2 class="text-3xl mt-0">
                 <a href="{{ $featuredPost->getUrl() }}" title="Read {{ $featuredPost->title }}" class="text-link font-extrabold">
                     {{ $featuredPost->title }}
                 </a>
             </h2>
+            <p class="text-text opacity-60 font-medium my-2">
+                {{ $featuredPost->getDate()->format('F j, Y') }}
+            </p>
 
             <p class="mt-0 mb-4">{!! $featuredPost->getExcerpt() !!}</p>
 

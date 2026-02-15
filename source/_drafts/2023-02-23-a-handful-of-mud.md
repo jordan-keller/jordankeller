@@ -4,8 +4,11 @@ section: content
 title: "A Handful of Mud"
 subtitle:
 date: 2023-02-23
-description: 
-categories: [lyrics, a handful of mud, redshift]
+description:
+type:
+tags:
+categories:
+categories_legacy: [lyrics, a handful of mud, redshift]
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---
