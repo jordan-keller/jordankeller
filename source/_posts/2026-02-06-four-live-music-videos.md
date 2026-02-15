@@ -1,15 +1,15 @@
 ---
 extends: _layouts.post
 section: content
-title: "I joined a band 3 months before leaving Chicago"
+title: "The sound of four musicians in a room in Chicago"
 subtitle:
 date: 2026-02-06
 description: Live recordings of four songs performed by four humans playing at the same time in the same room
-type: video
-categories: [live performance]
+type: music
+categories: [live performance, video]
 tags: charles austin, brock winthrop, asian kung-fu generation, live music
 cover_image: ""
-featured: true
+featured: false
 ---
 
 I joined a band 3 months before I left Chicago. My buddy, Charles, asked me if I'd be down to learn and record live performances of four songs with us and his two friends, Joe and James.

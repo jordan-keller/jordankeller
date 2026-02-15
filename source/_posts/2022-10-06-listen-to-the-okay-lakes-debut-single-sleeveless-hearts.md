@@ -6,8 +6,8 @@ subtitle:
 date: 2022-10-06
 description: Check out the first single off my upcoming debut album, Redshift
 type: newsletter
-tags: single, sleeveless hearts, the okay lakes
 categories: [song]
+tags: single, sleeveless hearts, the okay lakes
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false
 ---

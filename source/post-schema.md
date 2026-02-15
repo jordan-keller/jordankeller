@@ -2,20 +2,22 @@
 
 ## Allowed Types
 
-- Music
-- Video
-- Essay
-- Newsletter
+- music
+- video
+- essay
+- newsletter
 
 ## Allowed Categories
 
-- Score
-- Live Performance
-- Song
-- Liner Notes
-- Album Trailer
-- Blog
-- Analysis
+- score
+- live-performance
+- song
+- liner-notes
+- album-trailer
+- blog
+- analysis
+- album
+- music-video
 
 ## Tags
 

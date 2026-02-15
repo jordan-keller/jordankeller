@@ -7,7 +7,7 @@
         @yield('content')
     </div>
 
-    @foreach ($page->posts($posts) as $post)
+    @foreach ($page->posts as $post)
         @include('_components.post-preview-inline')
 
         @if (! $loop->last)

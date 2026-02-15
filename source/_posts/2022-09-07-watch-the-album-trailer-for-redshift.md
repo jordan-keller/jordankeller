@@ -6,7 +6,7 @@ subtitle:
 date: 2022-09-07
 description: Get a peek inside Shirk Studios and Populist Studios at the work of crafting the debut Okay Lakes album, 'Redshift'
 type: video
-categories: [album trailer]
+categories: [album-trailer]
 tags: the okay lakes, redshift, album art, song art
 cover_image: "../assets/img/a-huge-dweeb.jpeg"
 featured: false

@@ -1,9 +1,5 @@
 @extends('_layouts.main')
 
-@php
-    $page->type = 'article';
-@endphp
-
 @section('body')
 
     @if ($page->categories)

@@ -19,18 +19,18 @@ return [
     'themes' => [
         'human' => [
             'label' => 'Human',
-            'categories' => [], // Shows ALL posts (empty = no filtering)
+            'types' => [], // Empty array = show all types
             'hero' => [
                 'image' => '/assets/img/human-hero.jpg',
                 'heading' => 'All Posts',
                 'subheading' => 'The everything feed'
-            ], // ← Added missing comma here!
+            ],
             'about_content' => 'about-default.md',
             'about_image' => '/assets/img/about-default.png',
         ],
         'musician' => [
             'label' => 'Musician',
-            'categories' => ['music'],
+            'types' => ['music'], // Multiple types
             'hero' => [
                 'image' => '/assets/img/musician-hero.jpg',
                 'heading' => 'Music',
@@ -39,10 +39,19 @@ return [
             'about_content' => '/about/musician.md',
             'about_image' => '/assets/img/musician.png',
         ],
-
+        'writer' => [
+            'label' => 'Writer',
+            'types' => ['analysis', 'screenplay', 'essay'], // Multiple types
+            'hero' => [
+                'image' => '/assets/img/writer-hero.jpg',
+                'heading' => 'Writing',
+                'subheading' => 'Essays, screenplays, and analysis.'
+            ],
+            'about_content' => '/about/writer.md',
+            'about_image' => '/assets/img/writer.png',
+        ],
     ],
     
-    // Collections
     'collections' => [
         'posts' => [
             'author' => 'Jordan Keller',
@@ -52,8 +61,17 @@ return [
         'categories' => [
             'path' => '/blog/categories/{filename}',
             'posts' => function ($page, $allPosts) {
-                return $allPosts->filter(function ($post) use ($page) {
-                    return $post->categories ? in_array($page->getFilename(), $post->categories, true) : false;
+                // Get the category name from the page filename
+                $categorySlug = $page->getFilename();
+                
+                return $allPosts->filter(function ($post) use ($categorySlug) {
+                    // Check if post has categories and it's an array
+                    if (!isset($post->categories) || !is_array($post->categories)) {
+                        return false;
+                    }
+                    
+                    // Check if any of the post's categories match this category slug
+                    return in_array($categorySlug, $post->categories, true);
                 });
             },
         ],
@@ -96,23 +114,10 @@ return [
         return Str::endsWith(trimPath($page->getPath()), trimPath($path));
     },
 
-    // Helper to get posts filtered by theme
-    'getPostsByTheme' => function ($posts, $theme, $allThemes) {
-        if (!isset($allThemes[$theme])) {
-            $theme = 'human'; // fallback to default
-        }
-        
-        $categories = $allThemes[$theme]['categories'] ?? [];
-        
-        return $posts->filter(function ($post) use ($categories) {
-            if (!$post->categories || !is_array($post->categories)) {
-                return empty($categories); // Show uncategorized posts on "human" theme
-            }
-            
-            $postCats = array_map('trim', $post->categories);
-            $themeCats = array_map('trim', $categories);
-            
-            return empty($categories) || !empty(array_intersect($postCats, $themeCats));
+    // Helper to get posts filtered by category
+    'getPostsByCategory' => function ($posts, $category) {
+        return $posts->filter(function ($post) use ($category) {
+            return isset($post->categories) && is_array($post->categories) && in_array($category, $post->categories);
         });
     },
 ];

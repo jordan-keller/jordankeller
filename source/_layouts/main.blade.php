@@ -60,36 +60,50 @@ x-data="{
         this.showHero(value);
     },
     filterPosts(theme) {
-        const themeCategories = window.themeConfig?.[theme]?.categories || [];
-        const posts = document.querySelectorAll('.post-item');
-        const separators = document.querySelectorAll('.post-separator');
+    const themeTypes = window.themeConfig?.[theme]?.types || [];
+    const posts = document.querySelectorAll('.post-item');
+    const separators = document.querySelectorAll('.post-separator');
+    
+    posts.forEach(function(post) {
+        const postType = post.dataset.type;
         
-        posts.forEach(post => {
-            const rawCategories = post.dataset.categories || '';
-            // Trim whitespace + normalize case + split
-            const postCategories = rawCategories
-                .split(',')
-                .map(cat => cat.trim().toLowerCase())
-                .filter(c => c);
-                
-            const normalizedThemeCats = themeCategories.map(cat => cat.toLowerCase());
-            const hasMatch = postCategories.some(cat => 
-                normalizedThemeCats.includes(cat)
-            );
+        if (themeTypes.length === 0) {
+            post.style.display = '';
+        } else if (themeTypes.includes(postType)) {
+            post.style.display = '';
+        } else {
+            post.style.display = 'none';
+        }
+    });
+    
+    // Hide ALL separators first
+    separators.forEach(function(sep) {
+        sep.style.display = 'none';
+    });
+    
+    // Only show separators between visible posts
+    const visiblePosts = Array.from(posts).filter(function(p) { 
+        return p.style.display !== 'none'; 
+    });
+    
+// Show separators between consecutive visible posts
+    if (visiblePosts.length > 1) {
+        for (let i = 0; i < visiblePosts.length - 1; i++) {
+            const currentPost = visiblePosts[i];
+            const nextPost = visiblePosts[i + 1];
             
-            if (hasMatch || themeCategories.length === 0) {
-                post.style.display = '';
-            } else {
-                post.style.display = 'none';
+            // Find all elements between current and next visible post
+            let element = currentPost.nextElementSibling;
+            while (element && element !== nextPost) {
+                if (element.classList.contains('post-separator')) {
+                    element.style.display = '';
+                    break; // Only show one separator between posts
+                }
+                element = element.nextElementSibling;
             }
-        });
-        
-        // Hide separators when few/no posts visible
-        const visiblePosts = Array.from(posts).filter(p => p.style.display !== 'none');
-        separators.forEach(sep => {
-            sep.style.display = visiblePosts.length > 1 ? '' : 'none';
-        });
-    },
+        }
+    }
+},
     showHero(theme) {
         document.querySelectorAll('[data-theme-hero]').forEach(hero => {
             hero.classList.add('hidden');
