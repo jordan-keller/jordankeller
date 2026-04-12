@@ -1,0 +1,16 @@
+node_modules/
+build_production/
+vendor/
+.zshrc
+jordankeller/
+explore-ghost-export.ipynb
+source/hot
+source/assets/build/
+.DS_Store
+build_local/
+.DS_Store
+._.DS_Store
+source/_posts/_archive
+
+# Local Netlify folder
+.netlify

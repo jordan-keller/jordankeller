@@ -1,0 +1,1443 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="description" content="Writer, producer, and musician in Grand Rapids, Michigan." />
+
+        <meta property="og:title" content="Jordan Keller" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://develop--jordan-keller.netlify.app/" />
+        <meta property="og:description" content="Writer, producer, and musician in Grand Rapids, Michigan." />
+
+        <title>Jordan Keller /</title>
+        <link rel="home" href="https://develop--jordan-keller.netlify.app" />
+        <link rel="icon" href="/favicon.ico" />
+        <link href="/blog/feed.atom" type="application/atom+xml" rel="alternate" title="Jordan Keller Atom Feed" />
+
+        <!-- Insert analytics code here -->
+
+        <link
+            href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i"
+            rel="stylesheet"
+        />
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css" rel="stylesheet" />
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:opsz,wght@8..24,400..700&display=swap"
+            rel="stylesheet"
+        />
+        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100..700&display=swap"
+            rel="stylesheet"
+        />
+
+        <script>
+            window.themeConfig = {
+                human: {
+                    label: 'Human',
+                    types: [],
+                },
+                musician: {
+                    label: 'Musician',
+                    types: ['album', 'song', 'score', 'liner-note', 'live-performance'],
+                },
+                writer: {
+                    label: 'Writer',
+                    types: ['essay', 'analysis', 'newsletter', 'blog', 'liner-notes'],
+                },
+            };
+        </script>
+
+        <link rel="stylesheet" href="/assets/build/assets/main-kmsxbnTH.css" />
+        <script defer type="module" src="/assets/build/assets/main-4_rUXtX6.js"></script>
+    </head>
+
+    <body
+        x-data="{
+            theme: localStorage.getItem('theme') || 'human',
+            themeDropdownOpen: false,
+            setTheme(value) {
+                this.theme = value
+                document.documentElement.setAttribute('data-theme', value)
+                localStorage.setItem('theme', value)
+                this.filterPosts(value)
+                this.showHero(value)
+            },
+            filterPosts(theme) {
+                const themeTypes = window.themeConfig?.[theme]?.types || []
+                const posts = document.querySelectorAll('.post-item')
+                const separators = document.querySelectorAll('.post-separator')
+
+                posts.forEach(function (post) {
+                    const postTypes = post.dataset.type
+                        ? post.dataset.type.split(' ')
+                        : []
+
+                    if (themeTypes.length === 0) {
+                        post.style.display = ''
+                    } else if (postTypes.some((t) => themeTypes.includes(t))) {
+                        post.style.display = ''
+                    } else {
+                        post.style.display = 'none'
+                    }
+                })
+
+                // Hide ALL separators first
+                separators.forEach(function (sep) {
+                    sep.style.display = 'none'
+                })
+
+                // Only show separators between visible posts
+                const visiblePosts = Array.from(posts).filter(function (p) {
+                    return p.style.display !== 'none'
+                })
+
+                if (visiblePosts.length > 1) {
+                    for (let i = 0; i < visiblePosts.length - 1; i++) {
+                        const currentPost = visiblePosts[i]
+                        const nextPost = visiblePosts[i + 1]
+
+                        let element = currentPost.nextElementSibling
+                        while (element && element !== nextPost) {
+                            if (element.classList.contains('post-separator')) {
+                                element.style.display = ''
+                                break
+                            }
+                            element = element.nextElementSibling
+                        }
+                    }
+                }
+            },
+            showHero(theme) {
+                document.querySelectorAll('[data-theme-hero]').forEach((hero) => {
+                    hero.classList.add('hidden')
+                })
+
+                const currentHero = document.querySelector(
+                    `[data-theme-hero='${theme}']`,
+                )
+                if (currentHero) {
+                    currentHero.classList.remove('hidden')
+                }
+            },
+        }"
+        x-init="
+            setTimeout(() => {
+                setTheme(theme)
+            }, 100)
+        "
+        :data-theme="theme"
+        class="bg-bg text-text flex min-h-screen flex-col justify-between leading-normal"
+    >
+        <header class="flex h-24 items-center bg-gradient-to-t from-transparent to-black/20 py-4" role="banner">
+            <div class="max-w-8xl container mx-auto flex items-center px-4 sm:max-w-full lg:px-8">
+                <span class="flex items-center">
+                    <a href="/" title="Jordan Keller home" class="inline-flex items-center decoration-transparent">
+                        <h1 class="my-0 tracking-wide antialiased">Jordan Keller</h1>
+                    </a>
+                </span>
+
+                <span class="flex flex-1 items-end justify-end gap-2 font-sans text-sm">
+                    <nav class="text-md hidden items-end justify-end text-xs tracking-widest uppercase lg:flex">
+                        <a
+                            title="Jordan Keller Music"
+                            href="/music"
+                            class="ml-6 font-mono text-[var(--link)] no-underline opacity-70 transition transition-opacity duration-600 hover:underline hover:opacity-100"
+                        >
+                            Music
+                        </a>
+                        <a
+                            title="Jordan Keller Video"
+                            href="/video"
+                            class="ml-6 font-mono text-[var(--link)] no-underline opacity-70 transition transition-opacity duration-600 hover:underline hover:opacity-100"
+                        >
+                            Video
+                        </a>
+                        <a
+                            title="Jordan Keller Writing"
+                            href="/writing"
+                            class="ml-6 font-mono text-[var(--link)] no-underline opacity-70 transition transition-opacity duration-600 hover:underline hover:opacity-100"
+                        >
+                            Writing
+                        </a>
+                        <a
+                            title="Jordan Keller Chronology"
+                            href="/all"
+                            class="ml-6 font-mono text-[var(--link)] no-underline opacity-70 transition transition-opacity duration-600 hover:underline hover:opacity-100"
+                        >
+                            Chronology
+                        </a>
+                        <a
+                            title="Jordan Keller About"
+                            href="/about"
+                            class="ml-6 font-mono text-[var(--link)] no-underline opacity-70 transition transition-opacity duration-600 hover:underline hover:opacity-100"
+                        >
+                            About
+                        </a>
+                        <a
+                            title="Jordan Keller Contact"
+                            href="/contact"
+                            class="ml-6 font-mono text-[var(--link)] no-underline opacity-70 transition transition-opacity duration-600 hover:underline hover:opacity-100"
+                        >
+                            Contact
+                        </a>
+                    </nav>
+                    <div onmouseenter="navMenu.open()" onmouseleave="navMenu.close()" class="lg:hidden">
+                        <button class="flex h-10 items-center justify-end bg-transparent px-5 focus:outline-hidden">
+                            <svg
+                                id="js-nav-menu-show"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="text-text h-9 w-7 fill-current"
+                                viewBox="0 0 32 32"
+                            >
+                                <path
+                                    d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"
+                                />
+                            </svg>
+
+                            <svg
+                                id="js-nav-menu-hide"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="text-hover hidden h-9 w-7 fill-current"
+                                viewBox="0 0 36 30"
+                            >
+                                <polygon
+                                    points="32.8,4.4 28.6,0.2 18,10.8 7.4,0.2 3.2,4.4 13.8,15 3.2,25.6 7.4,29.8 18,19.2 28.6,29.8 32.8,25.6 22.2,15 "
+                                />
+                            </svg>
+                        </button>
+
+                        <nav
+                            id="js-nav-menu"
+                            class="max-h-0 w-full overflow-hidden pr-8 text-right opacity-0 shadow transition-all duration-300 ease-in-out"
+                        >
+                            <ul class="text-md my-0 items-end font-mono font-bold">
+                                <li class="pl-4">
+                                    <a
+                                        title="Jordan Keller Music"
+                                        href="/music"
+                                        class="text-link hover:text-hover block no-underline"
+                                    >
+                                        Music
+                                    </a>
+                                </li>
+                                <li class="pl-4">
+                                    <a
+                                        title="Jordan Keller Video"
+                                        href="/video"
+                                        class="text-link hover:text-hover block no-underline"
+                                    >
+                                        Video
+                                    </a>
+                                </li>
+                                <li class="pl-4">
+                                    <a
+                                        title="Jordan Keller Writing"
+                                        href="/writing"
+                                        class="text-link hover:text-hover block no-underline"
+                                    >
+                                        Writing
+                                    </a>
+                                </li>
+                                <li class="pl-4">
+                                    <a
+                                        title="Jordan Keller Chronology"
+                                        href="/all"
+                                        class="text-link hover:text-hover block no-underline"
+                                    >
+                                        Chronology
+                                    </a>
+                                </li>
+                                <li class="pl-4">
+                                    <a
+                                        title="Jordan Keller About"
+                                        href="/about"
+                                        class="text-link hover:text-hover block no-underline"
+                                    >
+                                        About
+                                    </a>
+                                </li>
+                                <li class="pl-4">
+                                    <a
+                                        title="Jordan Keller Contact"
+                                        href="/contact"
+                                        class="text-link hover:text-hover block no-underline"
+                                    >
+                                        Contact
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </span>
+            </div>
+        </header>
+
+        <nav
+            id="js-nav-menu"
+            class="max-h-0 w-full overflow-hidden pr-8 text-right opacity-0 shadow transition-all duration-300 ease-in-out lg:hidden"
+        >
+            <ul class="text-md my-0 items-end font-mono font-bold">
+                <li class="pl-4">
+                    <a title="Jordan Keller Music" href="/music" class="text-link hover:text-hover block no-underline">
+                        Music
+                    </a>
+                </li>
+                <li class="pl-4">
+                    <a title="Jordan Keller Video" href="/video" class="text-link hover:text-hover block no-underline">
+                        Video
+                    </a>
+                </li>
+                <li class="pl-4">
+                    <a
+                        title="Jordan Keller Writing"
+                        href="/writing"
+                        class="text-link hover:text-hover block no-underline"
+                    >
+                        Writing
+                    </a>
+                </li>
+                <li class="pl-4">
+                    <a
+                        title="Jordan Keller Chronology"
+                        href="/all"
+                        class="text-link hover:text-hover block no-underline"
+                    >
+                        Chronology
+                    </a>
+                </li>
+                <li class="pl-4">
+                    <a title="Jordan Keller About" href="/about" class="text-link hover:text-hover block no-underline">
+                        About
+                    </a>
+                </li>
+                <li class="pl-4">
+                    <a
+                        title="Jordan Keller Contact"
+                        href="/contact"
+                        class="text-link hover:text-hover block no-underline"
+                    >
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <main
+            role="main"
+            class="container flex-auto px-4 py-4 sm:max-w-screen md:max-w-5xl lg:mx-auto lg:max-w-7xl lg:px-8"
+            x-init="
+                $nextTick(() => {
+                    filterPosts(theme)
+                    showHero(theme)
+                })
+            "
+        >
+            <div
+                x-init="
+    $nextTick(() => {
+        filterPosts(theme)
+        showHero(theme)
+    })
+"
+            >
+                <div
+                    class="post-item my-4 flex w-full flex-col bg-[var(--bg)]/20 transition duration-300 ease-in-out hover:bg-[var(--bg)]/30 md:mx-auto lg:flex-row"
+                >
+                    <span class="w-full shrink-0 lg:w-2/5">
+                        <div class="aspect-video h-full w-full overflow-hidden">
+                            <iframe
+                                src="https://www.youtube.com/embed/K6PSFGlaUBY"
+                                title="The Return of Homemade Horror Show (2025)"
+                                class="h-full w-full"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                    </span>
+
+                    <div class="flex flex-1 flex-col lg:p-2 lg:pt-1.5">
+                        <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                            <span
+                                class="font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                            >
+                                movie
+                            </span>
+
+                            <h2 class="mt-0 text-2xl leading-tight md:text-3xl">
+                                <a
+                                    href="https://develop--jordan-keller.netlify.app/video/movie/2025-10-31-homemade-horror-show-2025"
+                                    title="Read The Return of Homemade Horror Show (2025)"
+                                    class="text-link font-extrabold opacity-85"
+                                >
+                                    The Return of Homemade Horror Show (2025)
+                                </a>
+                            </h2>
+
+                            <p class="mt-2 mb-0 leading-relaxed">The kids are all fright.</p>
+                        </span>
+
+                        <span
+                            class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                        >
+                            <span class="font-mono opacity-60"> October 31, 2025 • 0 min read </span>
+                            <a
+                                href="https://develop--jordan-keller.netlify.app/video/movie/2025-10-31-homemade-horror-show-2025"
+                                title="Read - The Return of Homemade Horror Show (2025)"
+                                class="font-sans no-underline decoration-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out hover:underline hover:opacity-100"
+                            >
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Watch Movie
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <hr class="post-separator my-3 opacity-0" />
+                <div
+                    class="post-item my-4 flex w-full flex-col bg-[var(--bg)]/20 transition duration-300 ease-in-out hover:bg-[var(--bg)]/30 md:mx-auto lg:flex-row"
+                >
+                    <span class="w-full shrink-0 lg:w-2/5">
+                        <div class="aspect-video h-full w-full overflow-hidden">
+                            <iframe
+                                src="https://www.youtube.com/embed/bijZX5KM2KQ"
+                                title="A Cross on a Gravel Road"
+                                class="h-full w-full"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                    </span>
+
+                    <div class="flex flex-1 flex-col lg:p-2 lg:pt-1.5">
+                        <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                            <span
+                                class="font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                            >
+                                music-video
+                            </span>
+
+                            <h2 class="mt-0 text-2xl leading-tight md:text-3xl">
+                                <a
+                                    href="https://develop--jordan-keller.netlify.app/video/music-video/2023-10-04-a-cross-on-a-gravel-road-music-video"
+                                    title="Read A Cross on a Gravel Road"
+                                    class="text-link font-extrabold opacity-85"
+                                >
+                                    A Cross on a Gravel Road
+                                </a>
+                            </h2>
+
+                            <p class="mt-2 mb-0 leading-relaxed">A Midwest ghost story.</p>
+                        </span>
+
+                        <span
+                            class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                        >
+                            <span class="font-mono opacity-60"> October 4, 2023 • 1 min read </span>
+                            <a
+                                href="https://develop--jordan-keller.netlify.app/video/music-video/2023-10-04-a-cross-on-a-gravel-road-music-video"
+                                title="Read - A Cross on a Gravel Road"
+                                class="font-sans no-underline decoration-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out hover:underline hover:opacity-100"
+                            >
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Watch & Learn More
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <hr class="post-separator my-3 opacity-0" />
+                <div
+                    class="post-item my-4 flex w-full flex-col bg-[var(--bg)]/20 transition duration-300 ease-in-out hover:bg-[var(--bg)]/30 md:mx-auto lg:flex-row"
+                >
+                    <span class="w-full shrink-0 lg:w-2/5">
+                        <div class="aspect-video h-full w-full overflow-hidden">
+                            <iframe
+                                src="https://www.youtube.com/embed/hxUwH4Prfac"
+                                title="Homemade Horror Show 2023"
+                                class="h-full w-full"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                    </span>
+
+                    <div class="flex flex-1 flex-col lg:p-2 lg:pt-1.5">
+                        <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                            <span
+                                class="font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                            >
+                                movie
+                            </span>
+
+                            <h2 class="mt-0 text-2xl leading-tight md:text-3xl">
+                                <a
+                                    href="https://develop--jordan-keller.netlify.app/video/movie/2023-03-08-homemade-horror-show-23"
+                                    title="Read Homemade Horror Show 2023"
+                                    class="text-link font-extrabold opacity-85"
+                                >
+                                    Homemade Horror Show 2023
+                                </a>
+                            </h2>
+
+                            <p class="mt-2 mb-0 leading-relaxed">
+                                Every October since 2018, on a coffin-black night in Chicago, local indie filmmakers and
+                                horror buffs gather to make their offerings to Homemade Horror Show—an annual anthology
+                                of indie horror/comedy shorts.
+                            </p>
+                        </span>
+
+                        <span
+                            class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                        >
+                            <span class="font-mono opacity-60"> March 8, 2023 • 0 min read </span>
+                            <a
+                                href="https://develop--jordan-keller.netlify.app/video/movie/2023-03-08-homemade-horror-show-23"
+                                title="Read - Homemade Horror Show 2023"
+                                class="font-sans no-underline decoration-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out hover:underline hover:opacity-100"
+                            >
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Watch the Movie
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <hr class="post-separator my-3 opacity-0" />
+                <div
+                    class="post-item my-4 flex w-full flex-col bg-[var(--bg)]/20 transition duration-300 ease-in-out hover:bg-[var(--bg)]/30 md:mx-auto lg:flex-row"
+                >
+                    <span class="w-full shrink-0 lg:w-2/5">
+                        <img
+                            src="../assets/img/the-okay-lakes/song-arts/redshift-album-art.webp"
+                            alt='My album "Redshift" by The Okay Lakes — out now cover image'
+                            class="h-full w-full object-cover"
+                        />
+                    </span>
+
+                    <div class="flex flex-1 flex-col lg:p-2 lg:pt-1.5">
+                        <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                            <span
+                                class="font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                            >
+                                album
+                            </span>
+
+                            <h2 class="mt-0 text-2xl leading-tight md:text-3xl">
+                                <a
+                                    href="https://develop--jordan-keller.netlify.app/music/album/2023-02-23-listen-to-redshift-the-debut-album-from-the-okay-lakes-out-today"
+                                    title='Read My album "Redshift" by The Okay Lakes — out now'
+                                    class="text-link font-extrabold opacity-85"
+                                >
+                                    My album &quot;Redshift&quot; by The Okay Lakes — out now
+                                </a>
+                            </h2>
+
+                            <p class="mt-2 mb-0 leading-relaxed">
+                                A 12-song album to soundtrack moonsilvered night drives on the patchy back roads of a
+                                sprawling Midwestern soundscape—out where the county lines of art-folk, indie rock, and
+                                Americana meet.
+                            </p>
+                        </span>
+
+                        <span
+                            class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                        >
+                            <span class="font-mono opacity-60"> February 23, 2023 • 3 min read </span>
+                            <a
+                                href="https://develop--jordan-keller.netlify.app/music/album/2023-02-23-listen-to-redshift-the-debut-album-from-the-okay-lakes-out-today"
+                                title='Read - My album "Redshift" by The Okay Lakes — out now'
+                                class="font-sans no-underline decoration-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out hover:underline hover:opacity-100"
+                            >
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <hr class="post-separator my-3 opacity-0" />
+                <div
+                    class="post-item my-4 flex w-full flex-col bg-[var(--bg)]/20 transition duration-300 ease-in-out hover:bg-[var(--bg)]/30 md:mx-auto lg:flex-row"
+                >
+                    <span class="w-full shrink-0 lg:w-2/5">
+                        <img
+                            src="../assets/img/the-okay-lakes/song-arts/redshift.webp"
+                            alt="Redshift is a song about feeling like a stranger in a place you used to belong cover image"
+                            class="h-full w-full object-cover"
+                        />
+                    </span>
+
+                    <div class="flex flex-1 flex-col lg:p-2 lg:pt-1.5">
+                        <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                            <span
+                                class="font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                            >
+                                liner-note
+                            </span>
+
+                            <h2 class="mt-0 text-2xl leading-tight md:text-3xl">
+                                <a
+                                    href="https://develop--jordan-keller.netlify.app/music/liner-note/2023-02-17-redshift-is-a-song-about-feeling-like-a-stranger-in-a-place-you-used-to-belong"
+                                    title="Read Redshift is a song about feeling like a stranger in a place you used to belong"
+                                    class="text-link font-extrabold opacity-85"
+                                >
+                                    Redshift is a song about feeling like a stranger in a place you used to belong
+                                </a>
+                            </h2>
+
+                            <p class="mt-2 mb-0 leading-relaxed">Hear the title track off the album (out next week!)</p>
+                        </span>
+
+                        <span
+                            class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                        >
+                            <span class="font-mono opacity-60"> February 17, 2023 • 2 min read </span>
+                            <a
+                                href="https://develop--jordan-keller.netlify.app/music/liner-note/2023-02-17-redshift-is-a-song-about-feeling-like-a-stranger-in-a-place-you-used-to-belong"
+                                title="Read - Redshift is a song about feeling like a stranger in a place you used to belong"
+                                class="font-sans no-underline decoration-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out hover:underline hover:opacity-100"
+                            >
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Read Liner Note
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <hr class="post-separator my-3 opacity-0" />
+                <div
+                    class="post-item my-4 flex w-full flex-col bg-[var(--bg)]/20 transition duration-300 ease-in-out hover:bg-[var(--bg)]/30 md:mx-auto lg:flex-row"
+                >
+                    <span class="w-full shrink-0 lg:w-2/5">
+                        <img
+                            src="../assets/img/the-okay-lakes/song-arts/cracks.webp"
+                            alt="An art-folk song/tone poem about the dueling brutality/beauty of Chicago winters cover image"
+                            class="h-full w-full object-cover"
+                        />
+                    </span>
+
+                    <div class="flex flex-1 flex-col lg:p-2 lg:pt-1.5">
+                        <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                            <span
+                                class="font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                            >
+                                liner-note
+                            </span>
+
+                            <h2 class="mt-0 text-2xl leading-tight md:text-3xl">
+                                <a
+                                    href="https://develop--jordan-keller.netlify.app/music/liner-note/2023-01-27-cracks-is-an-art-folk-tone-poem-about-the-dueling-brutalitybeauty-of-chicago-winters"
+                                    title="Read An art-folk song/tone poem about the dueling brutality/beauty of Chicago winters"
+                                    class="text-link font-extrabold opacity-85"
+                                >
+                                    An art-folk song/tone poem about the dueling brutality/beauty of Chicago winters
+                                </a>
+                            </h2>
+
+                            <p class="mt-2 mb-0 leading-relaxed">
+                                A simple, windswept, string-laden guitar tune that sounds best when played with
+                                frost-bitten fingers
+                            </p>
+                        </span>
+
+                        <span
+                            class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                        >
+                            <span class="font-mono opacity-60"> January 27, 2023 • 1 min read </span>
+                            <a
+                                href="https://develop--jordan-keller.netlify.app/music/liner-note/2023-01-27-cracks-is-an-art-folk-tone-poem-about-the-dueling-brutalitybeauty-of-chicago-winters"
+                                title="Read - An art-folk song/tone poem about the dueling brutality/beauty of Chicago winters"
+                                class="font-sans no-underline decoration-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out hover:underline hover:opacity-100"
+                            >
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Read Liner Note
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <hr class="post-separator my-3 opacity-0" />
+                <div
+                    class="post-item my-4 flex w-full flex-col bg-[var(--bg)]/20 transition duration-300 ease-in-out hover:bg-[var(--bg)]/30 md:mx-auto lg:flex-row"
+                >
+                    <span class="w-full shrink-0 lg:w-2/5">
+                        <div class="aspect-video h-full w-full overflow-hidden">
+                            <iframe
+                                src="https://www.youtube.com/embed/OE4zkQCTFvE"
+                                title='My album, "Redshift" by The Okay Lakes — Out February 23&#039; + Album Trailer'
+                                class="h-full w-full"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                    </span>
+
+                    <div class="flex flex-1 flex-col lg:p-2 lg:pt-1.5">
+                        <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                            <span
+                                class="font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                            >
+                                newsletter
+                            </span>
+
+                            <h2 class="mt-0 text-2xl leading-tight md:text-3xl">
+                                <a
+                                    href="https://develop--jordan-keller.netlify.app/music/newsletter/2023-01-19-my-debut-album-redshift-is-out-on-february-23"
+                                    title='Read My album, "Redshift" by The Okay Lakes — Out February 23&#039; + Album Trailer'
+                                    class="text-link font-extrabold opacity-85"
+                                >
+                                    My album, &quot;Redshift&quot; by The Okay Lakes — Out February 23&#039; + Album
+                                    Trailer
+                                </a>
+                            </h2>
+
+                            <p class="mt-2 mb-0 leading-relaxed">
+                                An introduction to my upcoming album, an album art trailer, details on the album release
+                                show at Hideout in Chicago, and a self-indulgent dollop of family video sentimentality
+                            </p>
+                        </span>
+
+                        <span
+                            class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                        >
+                            <span class="font-mono opacity-60"> January 19, 2023 • 2 min read </span>
+                            <a
+                                href="https://develop--jordan-keller.netlify.app/music/newsletter/2023-01-19-my-debut-album-redshift-is-out-on-february-23"
+                                title='Read - My album, "Redshift" by The Okay Lakes — Out February 23&#039; + Album Trailer'
+                                class="font-sans no-underline decoration-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out hover:underline hover:opacity-100"
+                            >
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Learn More
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <hr class="post-separator my-3 opacity-0" />
+                <div
+                    class="post-item my-4 flex w-full flex-col bg-[var(--bg)]/20 transition duration-300 ease-in-out hover:bg-[var(--bg)]/30 md:mx-auto lg:flex-row"
+                >
+                    <span class="w-full shrink-0 lg:w-2/5">
+                        <div class="aspect-video h-full w-full overflow-hidden">
+                            <iframe
+                                src="https://www.youtube.com/embed/V9T-_sDW6HM"
+                                title="Sleeveless Hearts"
+                                class="h-full w-full"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                    </span>
+
+                    <div class="flex flex-1 flex-col lg:p-2 lg:pt-1.5">
+                        <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                            <span
+                                class="font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                            >
+                                music-video
+                            </span>
+
+                            <h2 class="mt-0 text-2xl leading-tight md:text-3xl">
+                                <a
+                                    href="https://develop--jordan-keller.netlify.app/video/music-video/2022-10-19-sleeveless-hearts-music-video"
+                                    title="Read Sleeveless Hearts"
+                                    class="text-link font-extrabold opacity-85"
+                                >
+                                    Sleeveless Hearts
+                                </a>
+                            </h2>
+
+                            <p class="mt-2 mb-0 leading-relaxed">
+                                If you ever had a night like this... may you never again. A music video for a song from
+                                my album.
+                            </p>
+                        </span>
+
+                        <span
+                            class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                        >
+                            <span class="font-mono opacity-60"> October 19, 2022 • 1 min read </span>
+                            <a
+                                href="https://develop--jordan-keller.netlify.app/video/music-video/2022-10-19-sleeveless-hearts-music-video"
+                                title="Read - Sleeveless Hearts"
+                                class="font-sans no-underline decoration-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out hover:underline hover:opacity-100"
+                            >
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Watch & Read More
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <hr class="post-separator my-3 opacity-0" />
+                <div
+                    class="post-item my-4 flex w-full flex-col bg-[var(--bg)]/20 transition duration-300 ease-in-out hover:bg-[var(--bg)]/30 md:mx-auto lg:flex-row"
+                >
+                    <span class="w-full shrink-0 lg:w-2/5">
+                        <div class="aspect-video h-full w-full overflow-hidden">
+                            <iframe
+                                src="https://www.youtube.com/embed/Brk1bm_urxQ"
+                                title="Inside the Studio: Watch the trailer for my album"
+                                class="h-full w-full"
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                    </span>
+
+                    <div class="flex flex-1 flex-col lg:p-2 lg:pt-1.5">
+                        <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                            <span
+                                class="font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                            >
+                                album-trailer
+                            </span>
+
+                            <h2 class="mt-0 text-2xl leading-tight md:text-3xl">
+                                <a
+                                    href="https://develop--jordan-keller.netlify.app/music/album-trailer/2022-09-07-watch-the-album-trailer-for-redshift"
+                                    title="Read Inside the Studio: Watch the trailer for my album"
+                                    class="text-link font-extrabold opacity-85"
+                                >
+                                    Inside the Studio: Watch the trailer for my album
+                                </a>
+                            </h2>
+
+                            <p class="mt-2 mb-0 leading-relaxed">
+                                Get a peek inside Shirk Studios and Populist Studios making The Okay Lakes album,
+                                'Redshift'
+                            </p>
+                        </span>
+
+                        <span
+                            class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                        >
+                            <span class="font-mono opacity-60"> September 7, 2022 • 1 min read </span>
+                            <a
+                                href="https://develop--jordan-keller.netlify.app/music/album-trailer/2022-09-07-watch-the-album-trailer-for-redshift"
+                                title="Read - Inside the Studio: Watch the trailer for my album"
+                                class="font-sans no-underline decoration-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out hover:underline hover:opacity-100"
+                            >
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Watch Trailer & Learn More
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+                <hr class="post-separator my-3 opacity-0" />
+                <div
+                    class="post-item my-4 flex w-full flex-col bg-[var(--bg)]/20 transition duration-300 ease-in-out hover:bg-[var(--bg)]/30 md:mx-auto lg:flex-row"
+                >
+                    <span class="w-full shrink-0 lg:w-2/5">
+                        <img
+                            src="../assets/img/operation-route-66.webp"
+                            alt="Operation Route 66 cover image"
+                            class="h-full w-full object-cover"
+                        />
+                    </span>
+
+                    <div class="flex flex-1 flex-col lg:p-2 lg:pt-1.5">
+                        <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                            <span
+                                class="font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                            >
+                                score
+                            </span>
+
+                            <h2 class="mt-0 text-2xl leading-tight md:text-3xl">
+                                <a
+                                    href="https://develop--jordan-keller.netlify.app/music/score/2015-03-08-operation-route-66"
+                                    title="Read Operation Route 66"
+                                    class="text-link font-extrabold opacity-85"
+                                >
+                                    Operation Route 66
+                                </a>
+                            </h2>
+
+                            <p class="mt-2 mb-0 leading-relaxed">
+                                Original score composed/produced for the 2015 documentary.
+                            </p>
+                        </span>
+
+                        <span
+                            class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                        >
+                            <span class="font-mono opacity-60"> March 8, 2015 • 1 min read </span>
+                            <a
+                                href="https://develop--jordan-keller.netlify.app/music/score/2015-03-08-operation-route-66"
+                                title="Read - Operation Route 66"
+                                class="font-sans no-underline decoration-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out hover:underline hover:opacity-100"
+                            >
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Hear Score & Read More
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="post-item w-full" data-type="music">
+                    <a
+                        href="https://develop--jordan-keller.netlify.app/music/live-performance/2026-02-06-four-live-music-videos"
+                        title="Read - LIVE: Four Songs in One Room in Chicago"
+                        class="text-[var(--text)] no-underline opacity-90 transition duration-200 hover:translate-x-1 hover:-translate-y-1 hover:text-[var(--text)]/100 hover:opacity-100"
+                    >
+                        <div class="my-1 flex w-full flex-col bg-[var(--bg)]/15">
+                            <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                                <p
+                                    class="my-0 font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                                >
+                                    live-performance
+                                </p>
+
+                                <h3 class="font-heading mt-0 mb-0 text-2xl text-balance text-[var(--link)]">
+                                    LIVE: Four Songs in One Room in Chicago
+                                </h3>
+
+                                <p class="font-body mt-0 mb-0 leading-relaxed">
+                                    Live video performances of songs by Charles Austin, Brock Winthrop (Alex Nichols),
+                                    and Asian Kung-Fu Nation.
+                                </p>
+                            </span>
+
+                            <span
+                                class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                            >
+                                <span class="font-mono opacity-60"> February 6, 2026 • 1 min read </span>
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Watch All Four Songs
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="post-item w-full" data-type="writing">
+                    <a
+                        href="https://develop--jordan-keller.netlify.app/writing/essay/2023-10-18-nothings-scarier-than-silence-in-were-all-going-to-the-worlds-fair"
+                        title='Read - Nothing&#039;s scarier than silence in "We&#039;re All Going to the World&#039;s Fair"'
+                        class="text-[var(--text)] no-underline opacity-90 transition duration-200 hover:translate-x-1 hover:-translate-y-1 hover:text-[var(--text)]/100 hover:opacity-100"
+                    >
+                        <div class="my-1 flex w-full flex-col bg-[var(--bg)]/15">
+                            <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                                <p
+                                    class="my-0 font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                                >
+                                    essay
+                                </p>
+
+                                <h3 class="font-heading mt-0 mb-0 text-2xl text-balance text-[var(--link)]">
+                                    Nothing&#039;s scarier than silence in &quot;We&#039;re All Going to the
+                                    World&#039;s Fair&quot;
+                                </h3>
+
+                                <p class="font-body mt-0 mb-0 leading-relaxed">
+                                    A look at the cinematic storytelling techniques of a slow-burn, coming-of-age indie
+                                    horror movie that asks the most important spiritual question of our times: 'What if
+                                    the internet's a demon we summon into our lives by posting on it?'
+                                </p>
+                            </span>
+
+                            <span
+                                class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                            >
+                                <span class="font-mono opacity-60"> October 18, 2023 • 9 min read </span>
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Read Essay
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="post-item w-full" data-type="writing">
+                    <a
+                        href="https://develop--jordan-keller.netlify.app/writing/analysis/2023-09-20-mike-violas-paul-mccarthy-is-an-open-love-letter-to-classic-rock"
+                        title='Read - Mike Viola&#039;s "Paul McCarthy" is an open love letter to classic rock'
+                        class="text-[var(--text)] no-underline opacity-90 transition duration-200 hover:translate-x-1 hover:-translate-y-1 hover:text-[var(--text)]/100 hover:opacity-100"
+                    >
+                        <div class="my-1 flex w-full flex-col bg-[var(--bg)]/15">
+                            <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                                <p
+                                    class="my-0 font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                                >
+                                    analysis
+                                </p>
+
+                                <h3 class="font-heading mt-0 mb-0 text-2xl text-balance text-[var(--link)]">
+                                    Mike Viola&#039;s &quot;Paul McCarthy&quot; is an open love letter to classic rock
+                                </h3>
+
+                                <p class="font-body mt-0 mb-0 leading-relaxed">
+                                    An album review (sorta), but mostly a look at the craft of veteran
+                                    songwriter/producer operating at the top of his game
+                                </p>
+                            </span>
+
+                            <span
+                                class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                            >
+                                <span class="font-mono opacity-60"> September 20, 2023 • 9 min read </span>
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Read Analysis
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="post-item w-full" data-type="writing">
+                    <a
+                        href="https://develop--jordan-keller.netlify.app/writing/essay/2023-06-21-how-to-make-peace-with-the-unsatisfying-grunt-labor-of-writing"
+                        title="Read - How to make peace with the unsatisfying grunt labor of writing"
+                        class="text-[var(--text)] no-underline opacity-90 transition duration-200 hover:translate-x-1 hover:-translate-y-1 hover:text-[var(--text)]/100 hover:opacity-100"
+                    >
+                        <div class="my-1 flex w-full flex-col bg-[var(--bg)]/15">
+                            <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                                <p
+                                    class="my-0 font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                                >
+                                    essay
+                                </p>
+
+                                <h3 class="font-heading mt-0 mb-0 text-2xl text-balance text-[var(--link)]">
+                                    How to make peace with the unsatisfying grunt labor of writing
+                                </h3>
+
+                                <p class="font-body mt-0 mb-0 leading-relaxed">
+                                    On Rick Bass, the spirituality of working at your craft, and fighting for what makes
+                                    you feel free
+                                </p>
+                            </span>
+
+                            <span
+                                class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                            >
+                                <span class="font-mono opacity-60"> June 21, 2023 • 10 min read </span>
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Read Essay
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="post-item w-full" data-type="writing">
+                    <a
+                        href="https://develop--jordan-keller.netlify.app/writing/essay/2023-06-01-kill-the-part-of-you-that-cringes"
+                        title="Read - Kill the part of you that cringes"
+                        class="text-[var(--text)] no-underline opacity-90 transition duration-200 hover:translate-x-1 hover:-translate-y-1 hover:text-[var(--text)]/100 hover:opacity-100"
+                    >
+                        <div class="my-1 flex w-full flex-col bg-[var(--bg)]/15">
+                            <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                                <p
+                                    class="my-0 font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                                >
+                                    essay
+                                </p>
+
+                                <h3 class="font-heading mt-0 mb-0 text-2xl text-balance text-[var(--link)]">
+                                    Kill the part of you that cringes
+                                </h3>
+
+                                <p class="font-body mt-0 mb-0 leading-relaxed">
+                                    Let he who has not been cringe cast the first ironically detached subtweet
+                                </p>
+                            </span>
+
+                            <span
+                                class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                            >
+                                <span class="font-mono opacity-60"> June 1, 2023 • 7 min read </span>
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Read Essay
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="post-item w-full" data-type="music">
+                    <a
+                        href="https://develop--jordan-keller.netlify.app/music/live-performance/2023-03-03-watch-a-live-solo-version-of-cracks"
+                        title="Read - Watch a live, solo version of “Cracks”"
+                        class="text-[var(--text)] no-underline opacity-90 transition duration-200 hover:translate-x-1 hover:-translate-y-1 hover:text-[var(--text)]/100 hover:opacity-100"
+                    >
+                        <div class="my-1 flex w-full flex-col bg-[var(--bg)]/15">
+                            <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                                <p
+                                    class="my-0 font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                                >
+                                    live-performance
+                                </p>
+
+                                <h3 class="font-heading mt-0 mb-0 text-2xl text-balance text-[var(--link)]">
+                                    Watch a live, solo version of “Cracks”
+                                </h3>
+
+                                <p class="font-body mt-0 mb-0 leading-relaxed">
+                                    A stripped-down, live, solo version of 'Cracks' from our debut show at the Hideout
+                                    in Chicago last August
+                                </p>
+                            </span>
+
+                            <span
+                                class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                            >
+                                <span class="font-mono opacity-60"> March 3, 2023 • 2 min read </span>
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="post-item w-full" data-type="music">
+                    <a
+                        href="https://develop--jordan-keller.netlify.app/music/song/2022-08-21-demo-castaways-in-the-night"
+                        title="Read - Castaways in the Night"
+                        class="text-[var(--text)] no-underline opacity-90 transition duration-200 hover:translate-x-1 hover:-translate-y-1 hover:text-[var(--text)]/100 hover:opacity-100"
+                    >
+                        <div class="my-1 flex w-full flex-col bg-[var(--bg)]/15">
+                            <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                                <p
+                                    class="my-0 font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                                >
+                                    song
+                                </p>
+
+                                <h3 class="font-heading mt-0 mb-0 text-2xl text-balance text-[var(--link)]">
+                                    Castaways in the Night
+                                </h3>
+
+                                <p class="font-body mt-0 mb-0 leading-relaxed">
+                                    Quit doomscrolling and listen to this moony lullaby instead
+                                </p>
+                            </span>
+
+                            <span
+                                class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                            >
+                                <span class="font-mono opacity-60"> August 21, 2022 • 3 min read </span>
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+                <div class="post-item w-full" data-type="music">
+                    <a
+                        href="https://develop--jordan-keller.netlify.app/music/newsletter/2022-07-25-hello-its-your-pal-jordan"
+                        title="Read - Hello"
+                        class="text-[var(--text)] no-underline opacity-90 transition duration-200 hover:translate-x-1 hover:-translate-y-1 hover:text-[var(--text)]/100 hover:opacity-100"
+                    >
+                        <div class="my-1 flex w-full flex-col bg-[var(--bg)]/15">
+                            <span class="flex flex-col gap-1.5 px-4 pt-3 pb-2">
+                                <p
+                                    class="my-0 font-mono text-[0.65rem] font-thin tracking-[0.22em] text-[var(--text)]/60 uppercase opacity-60"
+                                >
+                                    newsletter
+                                </p>
+
+                                <h3 class="font-heading mt-0 mb-0 text-2xl text-balance text-[var(--link)]">Hello</h3>
+
+                                <p class="font-body mt-0 mb-0 leading-relaxed">I have some songs I want to share</p>
+                            </span>
+
+                            <span
+                                class="mt-auto flex items-center justify-between border-t border-white/5 px-4 py-2 text-[0.65rem] tracking-[0.22em] uppercase"
+                            >
+                                <span class="font-mono opacity-60"> July 25, 2022 • 3 min read </span>
+                                <span
+                                    class="font-sans text-[var(--link)] opacity-80 transition-opacity duration-300 ease-in-out group-hover:opacity-100"
+                                >
+                                    Read More
+                                    <span class="text-xs tracking-tight">>></span>
+                                </span>
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="mt-12 bg-gradient-to-b from-transparent to-black/60 py-4 text-center text-sm" role="contentinfo">
+            <div class="mx-auto w-80"></div>
+            <div
+                class="my-12 flex flex-col items-center justify-center p-4 bg-blend-color-burn shadow-sm md:p-8 md:px-12"
+            >
+                <h2 class="text-text mb-4">Send a Note</h2>
+                <form
+                    id="mc-newsletter-form"
+                    name="comment"
+                    action="https://theokaylakes.us17.list-manage.com/subscribe/post-json?u=2da58c5e74e83b874da17678d&id=b7b724795b&f_id=00a642e0f0"
+                    method="post"
+                    data-netlify="true"
+                    netlify-honeypot="bot-field"
+                    class="w-full max-w-3xl"
+                    novalidate
+                >
+                    <input type="hidden" name="form-name" value="comment" />
+
+                    <input type="hidden" name="bot-field" />
+
+                    <div class="flex w-full flex-col items-center gap-4">
+                        <div class="w-full max-w-lg">
+                            <textarea
+                                name="message"
+                                id="mc-message"
+                                rows="4"
+                                placeholder="Write a message (optional, leave blank if you just want to sign up for email updates"
+                                class="w-full border-none bg-[var(--text)] px-3 py-3 font-mono text-xs text-black placeholder-gray-400 focus:ring-2 focus:ring-[var(--link)] focus:outline-none"
+                            ></textarea>
+                        </div>
+
+                        <div class="w-full max-w-lg">
+                            <input
+                                type="email"
+                                required
+                                name="EMAIL"
+                                id="mc-email"
+                                placeholder="Your email address"
+                                class="w-full border-none bg-[var(--text)] px-3 py-3 font-mono text-xs text-black placeholder-gray-400 focus:ring-2 focus:ring-[var(--link)] focus:outline-none"
+                            />
+                        </div>
+                        <div class="flex w-full max-w-lg items-center gap-2">
+                            <input
+                                type="checkbox"
+                                name="subscribe"
+                                id="mc-subscribe"
+                                class="h-4 w-4 accent-[var(--link)] focus:ring-yellow-300"
+                                checked
+                            />
+                            <label for="mc-subscribe" class="text-text font-mono text-xs"
+                                >Sign up for email updates</label
+                            >
+                        </div>
+
+                        <div aria-hidden="true" style="position: absolute; left: -5000px">
+                            <input type="text" name="b_2da58c5e74e83b874da17678d_b7b724795b" tabindex="-1" value="" />
+                        </div>
+
+                        <div class="w-full max-w-lg">
+                            <button type="submit" id="mc-submit" class="w-full">Send</button>
+                        </div>
+
+                        <div id="mc-status" class="hidden text-center text-sm"></div>
+                    </div>
+                </form>
+            </div>
+
+            <script>
+                document.getElementById('mc-newsletter-form').addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    const form = this;
+                    const email = document.getElementById('mc-email').value.trim();
+                    const message = document.getElementById('mc-message').value.trim();
+                    const subscribe = document.getElementById('mc-subscribe').checked;
+                    const status = document.getElementById('mc-status');
+                    const submitBtn = document.getElementById('mc-submit');
+
+                    // Must have an email
+                    if (!email) {
+                        showStatus('Please enter your email address.', 'error');
+                        return;
+                    }
+
+                    // Must be doing at least one thing
+                    if (!message && !subscribe) {
+                        showStatus('Please leave a comment or subscribe to the newsletter (or both!).', 'error');
+                        return;
+                    }
+
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'Sending…';
+                    status.classList.add('hidden');
+
+                    const promises = [];
+
+                    // --- Netlify Forms (comment) ---
+                    if (message) {
+                        const netlifyData = new FormData();
+                        netlifyData.append('form-name', 'comment');
+                        netlifyData.append('bot-field', '');
+                        netlifyData.append('EMAIL', email);
+                        netlifyData.append('message', message);
+
+                        promises.push(
+                            fetch('/', {
+                                method: 'POST',
+                                body: netlifyData,
+                            })
+                                .then((res) => {
+                                    if (!res.ok) throw new Error('Comment failed');
+                                    return { type: 'comment', result: 'success' };
+                                })
+                                .catch(() => ({ type: 'comment', result: 'error' })),
+                        );
+                    }
+
+                    // --- Mailchimp (subscribe) ---
+                    if (subscribe) {
+                        promises.push(
+                            new Promise((resolve) => {
+                                const callbackName = 'mcCallback_' + Date.now();
+                                const url = form.action + '&EMAIL=' + encodeURIComponent(email) + '&c=' + callbackName;
+                                let settled = false;
+
+                                const timer = setTimeout(() => {
+                                    if (settled) return;
+                                    settled = true;
+                                    delete window[callbackName];
+                                    if (document.body.contains(script)) document.body.removeChild(script);
+                                    resolve({ type: 'subscribe', result: 'error', msg: 'Request timed out.' });
+                                }, 8000);
+
+                                window[callbackName] = function (data) {
+                                    if (settled) return;
+                                    settled = true;
+                                    clearTimeout(timer);
+                                    delete window[callbackName];
+                                    if (document.body.contains(script)) document.body.removeChild(script);
+                                    resolve({ type: 'subscribe', result: data.result, msg: data.msg });
+                                };
+
+                                const script = document.createElement('script');
+                                script.src = url;
+                                document.body.appendChild(script);
+                            }),
+                        );
+                    }
+
+                    Promise.all(promises).then((results) => {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'Send';
+
+                        const commentResult = results.find((r) => r.type === 'comment');
+                        const subscribeResult = results.find((r) => r.type === 'subscribe');
+
+                        const lines = [];
+
+                        if (commentResult) {
+                            if (commentResult.result === 'success') {
+                                lines.push('Your comment was sent.');
+                            } else {
+                                lines.push('Comment failed to send — try emailing me directly.');
+                            }
+                        }
+
+                        if (subscribeResult) {
+                            if (subscribeResult.result === 'success') {
+                                lines.push('Subscribed! Check your inbox to confirm.');
+                            } else {
+                                // Strip HTML Mailchimp sometimes includes in error messages
+                                const msg = subscribeResult.msg
+                                    ? subscribeResult.msg.replace(/<[^>]+>/g, '')
+                                    : 'Newsletter signup failed.';
+                                // "already subscribed" isn't really an error worth alarming people over
+                                lines.push(msg.includes('already subscribed') ? "You're already on the list!" : msg);
+                            }
+                        }
+
+                        const hasError =
+                            commentResult?.result === 'error' ||
+                            (subscribeResult?.result === 'error' &&
+                                !subscribeResult.msg?.includes('already subscribed'));
+
+                        showStatus(lines.join(' '), hasError ? 'error' : 'success');
+
+                        if (!hasError) form.reset();
+                    });
+
+                    function showStatus(text, type) {
+                        status.className =
+                            'text-center text-sm ' + (type === 'error' ? 'text-red-500' : 'text-green-600');
+                        status.textContent = text;
+                        status.classList.remove('hidden');
+                    }
+                });
+            </script>
+
+            <ul class="flex list-none flex-col justify-center md:flex-row">
+                <li class="md:mr-2">
+                    &copy;
+                    <a href="https://www.jordan-keller.com" title="www.jordan-keller.com">Jordan Keller</a>
+                    2026.
+                </li>
+                <li>
+                    Built with
+                    <a href="http://jigsaw.tighten.co" title="Jigsaw by Tighten">Jigsaw</a>
+                    and
+                    <a href="https://tailwindcss.com" title="Tailwind CSS, a utility-first CSS framework">
+                        Tailwind CSS
+                    </a>
+                    .
+                </li>
+            </ul>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+        <script>
+            const navMenu = {
+                open() {
+                    const menu = document.getElementById('js-nav-menu');
+                    menu.style.maxHeight = menu.scrollHeight + 'px';
+                    menu.style.opacity = '1';
+                    document.getElementById('js-nav-menu-hide').classList.remove('hidden');
+                    document.getElementById('js-nav-menu-show').classList.add('hidden');
+                },
+                close() {
+                    const menu = document.getElementById('js-nav-menu');
+                    menu.style.maxHeight = '0px';
+                    menu.style.opacity = '0';
+                    document.getElementById('js-nav-menu-hide').classList.add('hidden');
+                    document.getElementById('js-nav-menu-show').classList.remove('hidden');
+                },
+            };
+        </script>
+    </body>
+</html>

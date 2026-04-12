@@ -1,0 +1,49 @@
+/* Human Theme */
+[data-theme='human'] {
+    --bg: #303049;
+    --text: #ebebeb;
+    --link: #d2ff96;
+    --link-hover: #ffffff;
+    --font-body: 'Inter Variable', sans;
+    --font-mono: 'IBM Plex Mono', monospace;
+    --font-heading: 'Instrument Serif', sans-serif;
+}
+
+/* Base styles for ALL themes */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url('/assets/img/bg.webp');
+    background-color: var(--bg);
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* so it doesn't block clicks */
+}
+
+[data-theme='human'] body {
+    background: none; /* remove from body */
+}
+
+/* Musician Theme */
+[data-theme='musician'] {
+    --bg: hsla(0, 100%, 41%, 0.548);
+    --text: #ffff87;
+    --link: #5e971d;
+    --link-hover: rgb(193, 226, 155);
+    --font-body: 'Lato', sans;
+    --font-heading: 'courier new', monospace;
+}
+
+[data-theme='musician'] body {
+    background: none; /* remove body background to show pseudo-element */
+}
+
+[data-theme='musician'] body::before {
+    background-image: linear-gradient(hsl(16, 100%, 56%), hsl(70, 100%, 50%)), url('/assets/img/textured-bg.jpg');
+    background-blend-mode: saturation;
+}

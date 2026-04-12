@@ -1,0 +1,23 @@
+[build.environment]
+  PHP_VERSION = "8.3"
+
+[build]
+  command = "composer install && npm ci && npm run build && ./vendor/bin/jigsaw build"
+  publish = "build_local"
+
+[context.production]
+  command = "composer install --no-dev --optimize-autoloader && npm ci && npm run build && JIGSAW_ENV=production ./vendor/bin/jigsaw build production"
+  publish = "build_production"
+
+[context.branch-deploy]
+  command = "composer install --no-dev --optimize-autoloader && npm ci && npm run build && JIGSAW_ENV=staging ./vendor/bin/jigsaw build staging"
+  publish = "build_staging"
+
+[context.deploy-preview]
+  command = "composer install && npm ci && npm run build && ./vendor/bin/jigsaw build"
+  publish = "build_local"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

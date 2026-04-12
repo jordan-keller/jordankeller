@@ -1,0 +1,205 @@
+body {
+    font-size: 16px;
+    transition:
+        background-color 0.8s ease,
+        color 0.8s ease,
+        box-shadow 0.8s ease;
+}
+
+a {
+    @apply text-[var(--link)] decoration-[var(--link)];
+}
+
+a:hover,
+a:focus {
+    @apply text-[var(--text)] underline decoration-[var(--link)] decoration-1 underline-offset-5;
+}
+
+/* Active/focus states for better accessibility */
+a:focus-visible {
+    outline: 2px solid var(--link);
+    outline-offset: 2px;
+}
+
+a:active {
+    color: var(--link-hover);
+}
+
+blockquote {
+    @apply my-8 border-l-6 border-[var(--link)] p-6 text-base/7 italic bg-[var(--link)]/20;
+}
+
+pullquote {
+    @apply text-cyan-900 text-3xl my-2 block font-[var(--heading-font)];
+}
+
+button {
+    @apply w-full bg-[var(--link)] px-4 py-3 text-xs font-bold tracking-widest text-[var(--bg)] uppercase opacity-80 mix-blend-plus-lighter transition-colors duration-150 ease-in-out;
+}
+
+button:hover {
+    @apply opacity-100 transition-opacity duration-500 ease-in-out;
+}
+
+button.nav-theme {
+    @apply bg-transparent py-1 text-lg text-[var(--text)] hover:underline;
+}
+
+button.nav-theme-click {
+    @apply ml-0 rounded bg-transparent py-1 text-lg font-[var(--heading-font)] font-light text-[var(--text)] hover:underline;
+}
+
+button.nav-menu {
+    @apply bg-transparent px-4 py-3 font-mono text-xs font-bold tracking-widest text-white transition-colors duration-150 ease-in-out;
+}
+
+code {
+    @apply px-2;
+    @apply py-px;
+    @apply text-sm;
+    @apply bg-gray-300;
+    @apply rounded-sm;
+}
+
+code.hljs {
+    @apply p-0;
+    @apply bg-transparent;
+
+    & .hljs-comment,
+    & .hljs-keyword,
+    & .hljs-meta {
+        @apply font-normal;
+        @apply not-italic;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @apply mt-1;
+    @apply mb-1;
+
+    &:first-child {
+        @apply mt-0;
+    }
+}
+
+h1 {
+    @apply text-4xl;
+    @apply font-extrabold;
+}
+
+h2 {
+    @apply text-3xl;
+    @apply font-bold;
+}
+
+h3 {
+    @apply text-2xl;
+    @apply font-bold;
+}
+
+h4 {
+    @apply text-xl;
+    @apply font-normal;
+}
+
+h5 {
+    @apply text-lg;
+    @apply font-normal;
+}
+
+h6 {
+    @apply text-lg;
+    @apply font-light;
+}
+
+hr {
+    @apply my-12;
+    @apply border-b;
+    @apply rounded-full;
+}
+
+li {
+    & ul,
+    & ol {
+        @apply ml-8;
+        @apply my-0;
+    }
+}
+
+ol,
+ul {
+    @apply my-4;
+}
+
+ol {
+    @apply list-decimal;
+}
+
+ul {
+    @apply list-disc;
+}
+
+p {
+    @apply my-3;
+
+    @media (width >= theme(--breakpoint-md)) {
+        @apply my-6;
+    }
+}
+
+pre {
+    @apply p-4;
+    @apply my-6;
+    @apply text-base;
+    @apply leading-loose;
+    @apply rounded-sm;
+    @apply shadow-sm;
+    @apply overflow-x-auto;
+
+    & code {
+        @apply block;
+        @apply p-0;
+        @apply bg-transparent;
+    }
+}
+
+::selection {
+    @apply text-white;
+    @apply bg-blue-400;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+.youtube-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.youtube-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.hidden-honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
